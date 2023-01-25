@@ -16,24 +16,24 @@
   <meta name="author" content="MoMo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="GitLab-CE和Runner安装">
+    <meta name="description" content="删除此电脑中的软件图标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitLab-CE和Runner安装">
-<meta property="og:url" content="https://kuan.pages.dev/gitlab-ce%E5%92%8Crunner%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="删除此电脑中的软件图标">
+<meta property="og:url" content="https://kuan.pages.dev/article/387f6f72.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="GitLab-CE和Runner安装">
+<meta property="og:description" content="删除此电脑中的软件图标">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kuan.pages.dev/img/banner/Gitlab.jpeg">
-<meta property="article:published_time" content="2023-01-25T02:45:49.000Z">
-<meta property="article:modified_time" content="2023-01-25T05:12:59.881Z">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/Computer.jpeg">
+<meta property="article:published_time" content="2023-01-25T02:22:26.000Z">
+<meta property="article:modified_time" content="2023-01-25T09:38:47.297Z">
 <meta property="article:author" content="MoMo">
-<meta property="article:tag" content="GitLab">
+<meta property="article:tag" content="优化">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/Gitlab.jpeg">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/Computer.jpeg">
   
   
   
-  <title>GitLab-CE和Runner安装 - 菜鸟驿站</title>
+  <title>删除此电脑中的软件图标 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="GitLab-CE和Runner安装"></span>
+            <span id="subtitle" data-typed-text="删除此电脑中的软件图标"></span>
           
         </div>
 
@@ -222,7 +222,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 10:45" pubdate>
+        <time datetime="2023-01-25 10:22" pubdate>
           2023年1月25日 上午
         </time>
       </span>
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          226 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          10 分钟
+          2 分钟
         
       </span>
     
@@ -283,19 +283,17 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">GitLab-CE和Runner安装</h1>
+            <h1 style="display: none">删除此电脑中的软件图标</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="GitLab-CE和Gitlab-Runner安装"><a href="#GitLab-CE和Gitlab-Runner安装" class="headerlink" title="GitLab-CE和Gitlab-Runner安装"></a>GitLab-CE和Gitlab-Runner安装</h2><h2 id="1-GitLab-CE安装"><a href="#1-GitLab-CE安装" class="headerlink" title="1.GitLab-CE安装"></a>1.GitLab-CE安装</h2><h3 id="1-GitLab-CE"><a href="#1-GitLab-CE" class="headerlink" title="1.GitLab-CE"></a>1.GitLab-CE</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d \<br>--name Gitlab-CE \<br>-p <span class="hljs-number">22</span>:<span class="hljs-number">22</span> \<br>-p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> \<br>-p <span class="hljs-number">443</span>:<span class="hljs-number">443</span> \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/config:/</span>etc/gitlab \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/logs:/</span>var<span class="hljs-regexp">/log/gi</span>tlab \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/opt/gi</span>tlab \<br>--restart always \<br>gitlab/gitlab-ce:latest<br></code></pre></td></tr></table></figure>
-<h3 id="2-root密码查看"><a href="#2-root密码查看" class="headerlink" title="2.root密码查看"></a>2.root密码查看</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">docker exec -it Gitlab-CE <span class="hljs-keyword">grep</span> <span class="hljs-string">&#x27;Password:&#x27;</span> <span class="hljs-regexp">/etc/gi</span>tlab/initial_root_password<br></code></pre></td></tr></table></figure>
+                <p>删除<code>此电脑</code>中的软件图标</p>
+<p>1.按下<code>win+r</code>打开运行，输入<code>regedit</code>,依次打开如下路径。</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop<br></code></pre></td></tr></table></figure>
 
-
-<h2 id="2-Gitlab-Runner安装"><a href="#2-Gitlab-Runner安装" class="headerlink" title="2.Gitlab-Runner安装"></a>2.Gitlab-Runner安装</h2><h3 id="1-安装Runner"><a href="#1-安装Runner" class="headerlink" title="1.安装Runner"></a>1.安装Runner</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d \<br>--name Gitlab-Runner \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-Runner<span class="hljs-regexp">/config:/</span>etc/gitlab-runner \<br>-v <span class="hljs-regexp">/var/</span>run<span class="hljs-regexp">/docker.sock:/</span>var<span class="hljs-regexp">/run/</span>docker.sock \<br>--restart always \<br>gitlab/gitlab-runner:latest<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-注册Runner"><a href="#2-注册Runner" class="headerlink" title="2.注册Runner"></a>2.注册Runner</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">docker run <span class="hljs-params">--rm</span> \<br>-v <span class="hljs-string">/mnt/user/appdata/Gitlab/Gitlab-Runner/config</span>:<span class="hljs-string">/etc/gitlab-runner</span> gitlab/gitlab-runner register \<br><span class="hljs-params">--non-interactive</span> \<br><span class="hljs-params">--executor</span> <span class="hljs-string">&quot;docker&quot;</span> \<br><span class="hljs-params">--docker-image</span> alpine<span class="hljs-function">:latest</span> \<br><span class="hljs-params">--url</span> <span class="hljs-string">&quot;http://IP/&quot;</span> \<br><span class="hljs-params">--registration-token</span> <span class="hljs-string">&quot;Token&quot;</span> \<br><span class="hljs-params">--description</span> <span class="hljs-string">&quot;first-register-runner&quot;</span> \<br><span class="hljs-params">--tag-list</span> <span class="hljs-string">&quot;MicroServer,Home&quot;</span> \<br><span class="hljs-params">--run-untagged=</span><span class="hljs-string">&quot;true&quot;</span> \<br><span class="hljs-params">--locked=</span><span class="hljs-string">&quot;false&quot;</span> \<br><span class="hljs-params">--access-level=</span><span class="hljs-string">&quot;not_protected&quot;</span><br></code></pre></td></tr></table></figure>
-
+<p>2.找到文件夹<code>Desktop</code>点击下拉再点击<code>NameSpace</code>右击下面软件对应文件夹，右键点击“删除”。</p>
+<p>3.继续找到<code>MyComputer</code>点击下拉再点击<code>NameSpace</code>右击下面软件对应文件夹，右键点击“删除”。</p>
 
                 
               </div>
@@ -314,20 +312,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/Windows/" class="category-chain-item">Windows</a>
   
   
     <span>></span>
     
-  <a href="/categories/Linux/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
+  <a href="/categories/Windows/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Linux/%E6%96%87%E6%A1%A3/Gitlb/" class="category-chain-item">Gitlb</a>
-  
-  
-
   
 
   
@@ -343,7 +334,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/GitLab/">#GitLab</a>
+        <a href="/tags/%E4%BC%98%E5%8C%96/">#优化</a>
       
     </div>
   
@@ -355,8 +346,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>GitLab-CE和Runner安装</div>
-      <div>https://kuan.pages.dev/gitlab-ce和runner安装/</div>
+      <div>删除此电脑中的软件图标</div>
+      <div>https://kuan.pages.dev/article/387f6f72.html</div>
     </div>
     <div class="license-meta">
       
@@ -400,9 +391,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/esxi-8-0-key/" title="ESXI_8.0_KEY">
+                      <a href="/article/aae55609.html" title="NextCloud反向代理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ESXI_8.0_KEY</span>
+                        <span class="hidden-mobile">NextCloud反向代理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -410,8 +401,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/harbor%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE/" title="Harbor密码重置">
-                        <span class="hidden-mobile">Harbor密码重置</span>
+                      <a href="/article/5d938d1d.html" title="Chevereto安装">
+                        <span class="hidden-mobile">Chevereto安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

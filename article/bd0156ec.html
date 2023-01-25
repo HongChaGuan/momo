@@ -16,24 +16,24 @@
   <meta name="author" content="MoMo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="SSH密钥创建">
+    <meta name="description" content="GitLab-CE和Runner安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH密钥创建">
-<meta property="og:url" content="https://kuan.pages.dev/ssh%E5%AF%86%E9%92%A5%E5%88%9B%E5%BB%BA/index.html">
+<meta property="og:title" content="GitLab-CE和Runner安装">
+<meta property="og:url" content="https://kuan.pages.dev/article/bd0156ec.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="SSH密钥创建">
+<meta property="og:description" content="GitLab-CE和Runner安装">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kuan.pages.dev/img/banner/SSH.png">
-<meta property="article:published_time" content="2023-01-25T02:42:15.000Z">
-<meta property="article:modified_time" content="2023-01-25T05:12:59.385Z">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/Gitlab.jpeg">
+<meta property="article:published_time" content="2023-01-25T02:45:49.000Z">
+<meta property="article:modified_time" content="2023-01-25T09:38:47.210Z">
 <meta property="article:author" content="MoMo">
-<meta property="article:tag" content="密钥,SSH">
+<meta property="article:tag" content="GitLab">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/SSH.png">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/Gitlab.jpeg">
   
   
   
-  <title>SSH密钥创建 - 菜鸟驿站</title>
+  <title>GitLab-CE和Runner安装 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SSH密钥创建"></span>
+            <span id="subtitle" data-typed-text="GitLab-CE和Runner安装"></span>
           
         </div>
 
@@ -222,7 +222,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 10:42" pubdate>
+        <time datetime="2023-01-25 10:45" pubdate>
           2023年1月25日 上午
         </time>
       </span>
@@ -283,23 +283,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SSH密钥创建</h1>
+            <h1 style="display: none">GitLab-CE和Runner安装</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="1-创建密钥"><a href="#1-创建密钥" class="headerlink" title="1.创建密钥"></a>1.创建密钥</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa -b 4096<br><span class="hljs-meta prompt_">#</span><span class="language-bash">执行创建命令，-b参数为指定密钥长度</span><br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/home/pi/.ssh/id_rsa): <br>Enter passphrase (empty for no passphrase): <br><span class="hljs-meta prompt_">#</span><span class="language-bash">设置密钥密码，可以直接回车跳过</span><br>Enter same passphrase again: <br><span class="hljs-meta prompt_">#</span><span class="language-bash">确认密码，可以直接回车跳过</span><br>Your identification has been saved in /home/pi/.ssh/id_rsa.<br><span class="hljs-meta prompt_">#</span><span class="language-bash">公钥</span><br>Your public key has been saved in /home/pi/.ssh/id_rsa.pub.<br><span class="hljs-meta prompt_">#</span><span class="language-bash">私钥</span><br>The key fingerprint is:<br>SHA256:B25KhIK5xNfR3j7SBi52+e2Z+t0K7Ouhg3IzRqxyuEE pi@Debian<br>The key&#x27;s randomart image is:<br>+---[RSA 4096]----+<br>|     ..          |<br>|.o  ....         |<br>|oo....o o        |<br>|.... . + o       |<br>|.  E  + S .      |<br>|  .  + X *.      |<br>|   .o * = o+     |<br>|   o.+ * oo.* .  |<br>|   .+ + oo*O.o.. |<br>+----[SHA256]-----+<br></code></pre></td></tr></table></figure>
+                <h2 id="GitLab-CE和Gitlab-Runner安装"><a href="#GitLab-CE和Gitlab-Runner安装" class="headerlink" title="GitLab-CE和Gitlab-Runner安装"></a>GitLab-CE和Gitlab-Runner安装</h2><h2 id="1-GitLab-CE安装"><a href="#1-GitLab-CE安装" class="headerlink" title="1.GitLab-CE安装"></a>1.GitLab-CE安装</h2><h3 id="1-GitLab-CE"><a href="#1-GitLab-CE" class="headerlink" title="1.GitLab-CE"></a>1.GitLab-CE</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d \<br>--name Gitlab-CE \<br>-p <span class="hljs-number">22</span>:<span class="hljs-number">22</span> \<br>-p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> \<br>-p <span class="hljs-number">443</span>:<span class="hljs-number">443</span> \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/config:/</span>etc/gitlab \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/logs:/</span>var<span class="hljs-regexp">/log/gi</span>tlab \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/opt/gi</span>tlab \<br>--restart always \<br>gitlab/gitlab-ce:latest<br></code></pre></td></tr></table></figure>
+<h3 id="2-root密码查看"><a href="#2-root密码查看" class="headerlink" title="2.root密码查看"></a>2.root密码查看</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">docker exec -it Gitlab-CE <span class="hljs-keyword">grep</span> <span class="hljs-string">&#x27;Password:&#x27;</span> <span class="hljs-regexp">/etc/gi</span>tlab/initial_root_password<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-检查-ssh下authorized-keys文件"><a href="#2-检查-ssh下authorized-keys文件" class="headerlink" title="2.检查.ssh下authorized_keys文件"></a>2.检查.ssh下<code>authorized_keys</code>文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@Debian:~# cd .ssh/<br>root@Debian:~# ls .ssh/<br>id_rsa  id_rsa.pub<br>root@Debian:~/.ssh# cat id_rsa.pub &gt;&gt; authorized_keys<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-修改权限"><a href="#3-修改权限" class="headerlink" title="3.修改权限"></a>3.修改权限</h3><h4 id="修改-ssh的权限为700"><a href="#修改-ssh的权限为700" class="headerlink" title="修改.ssh的权限为700,"></a>修改<code>.ssh的权限为700</code>,</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@Debian:~# cd<br>root@Debian:~# chmod 700 .ssh<br>root@Debian:~# cd .ssh/<br></code></pre></td></tr></table></figure>
+<h2 id="2-Gitlab-Runner安装"><a href="#2-Gitlab-Runner安装" class="headerlink" title="2.Gitlab-Runner安装"></a>2.Gitlab-Runner安装</h2><h3 id="1-安装Runner"><a href="#1-安装Runner" class="headerlink" title="1.安装Runner"></a>1.安装Runner</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d \<br>--name Gitlab-Runner \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-Runner<span class="hljs-regexp">/config:/</span>etc/gitlab-runner \<br>-v <span class="hljs-regexp">/var/</span>run<span class="hljs-regexp">/docker.sock:/</span>var<span class="hljs-regexp">/run/</span>docker.sock \<br>--restart always \<br>gitlab/gitlab-runner:latest<br></code></pre></td></tr></table></figure>
 
-<h4 id="authorized-keys的权限为600或者更严格的400"><a href="#authorized-keys的权限为600或者更严格的400" class="headerlink" title="authorized_keys的权限为600或者更严格的400"></a><code>authorized_keys</code>的权限为600或者更严格的400</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@Debian:~# cd<br>root@Debian:~# chmod 600 .ssh/authorized_keys<br></code></pre></td></tr></table></figure>
-
-<h3 id="4-修改ssh的配置"><a href="#4-修改ssh的配置" class="headerlink" title="4.修改ssh的配置"></a>4.修改ssh的配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/ssh/sshd_config<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 允许root登录，但是禁止root密码登录</span><br><span class="hljs-attribute">PermitRootLogin</span> prohibit-password<br> <br><span class="hljs-comment"># 通过RSA认证</span><br>RSAAuthentication <span class="hljs-literal">yes</span><br> <br><span class="hljs-comment"># 允许pubKey（id_rsa.pub）登录</span><br>PubkeyAuthentication <span class="hljs-literal">yes</span><br><br><span class="hljs-comment">#使用密码  no为不使用密码</span><br>PasswordAuthentication <span class="hljs-literal">yes</span>                        <br></code></pre></td></tr></table></figure>
-
+<h3 id="2-注册Runner"><a href="#2-注册Runner" class="headerlink" title="2.注册Runner"></a>2.注册Runner</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">docker run <span class="hljs-params">--rm</span> \<br>-v <span class="hljs-string">/mnt/user/appdata/Gitlab/Gitlab-Runner/config</span>:<span class="hljs-string">/etc/gitlab-runner</span> gitlab/gitlab-runner register \<br><span class="hljs-params">--non-interactive</span> \<br><span class="hljs-params">--executor</span> <span class="hljs-string">&quot;docker&quot;</span> \<br><span class="hljs-params">--docker-image</span> alpine<span class="hljs-function">:latest</span> \<br><span class="hljs-params">--url</span> <span class="hljs-string">&quot;http://IP/&quot;</span> \<br><span class="hljs-params">--registration-token</span> <span class="hljs-string">&quot;Token&quot;</span> \<br><span class="hljs-params">--description</span> <span class="hljs-string">&quot;first-register-runner&quot;</span> \<br><span class="hljs-params">--tag-list</span> <span class="hljs-string">&quot;MicroServer,Home&quot;</span> \<br><span class="hljs-params">--run-untagged=</span><span class="hljs-string">&quot;true&quot;</span> \<br><span class="hljs-params">--locked=</span><span class="hljs-string">&quot;false&quot;</span> \<br><span class="hljs-params">--access-level=</span><span class="hljs-string">&quot;not_protected&quot;</span><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -324,8 +319,15 @@
   
     <span>></span>
     
-  <a href="/categories/Linux/%E6%89%8B%E5%86%8C/" class="category-chain-item">手册</a>
+  <a href="/categories/Linux/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Linux/%E6%96%87%E6%A1%A3/Gitlb/" class="category-chain-item">Gitlb</a>
+  
+  
+
   
 
   
@@ -341,7 +343,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AF%86%E9%92%A5-SSH/">#密钥,SSH</a>
+        <a href="/tags/GitLab/">#GitLab</a>
       
     </div>
   
@@ -353,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SSH密钥创建</div>
-      <div>https://kuan.pages.dev/ssh密钥创建/</div>
+      <div>GitLab-CE和Runner安装</div>
+      <div>https://kuan.pages.dev/article/bd0156ec.html</div>
     </div>
     <div class="license-meta">
       
@@ -398,9 +400,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/harbor%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE/" title="Harbor密码重置">
+                      <a href="/article/11ae3710.html" title="ESXI_8.0_KEY">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Harbor密码重置</span>
+                        <span class="hidden-mobile">ESXI_8.0_KEY</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -408,8 +410,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/linux%E6%8D%A2%E6%BA%90/" title="Linux换源">
-                        <span class="hidden-mobile">Linux换源</span>
+                      <a href="/article/eede64bd.html" title="Harbor密码重置">
+                        <span class="hidden-mobile">Harbor密码重置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
