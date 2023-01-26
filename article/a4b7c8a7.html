@@ -16,24 +16,24 @@
   <meta name="author" content="MoMo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ESXI_8密钥">
+    <meta name="description" content="本篇教程来详细讲解如何正确的设置 Ad­Guard Home ，来更有效的防止 DNS 污染以及去广告。与其它 Ad­Guard Home 教程的只讲方法、不讲逻辑的胡乱设置不同，认真看完这篇教程你会收获大量的知识和启发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ESXI_8.0_KEY">
-<meta property="og:url" content="https://kuan.pages.dev/article/11ae3710.html">
+<meta property="og:title" content="使用AdGuard Home自建DNS防污染、去广告">
+<meta property="og:url" content="https://kuan.pages.dev/article/a4b7c8a7.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="ESXI_8密钥">
+<meta property="og:description" content="本篇教程来详细讲解如何正确的设置 Ad­Guard Home ，来更有效的防止 DNS 污染以及去广告。与其它 Ad­Guard Home 教程的只讲方法、不讲逻辑的胡乱设置不同，认真看完这篇教程你会收获大量的知识和启发">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kuan.pages.dev/img/banner/VMware.jpeg">
-<meta property="article:published_time" content="2023-01-25T02:47:05.000Z">
-<meta property="article:modified_time" content="2023-01-26T02:28:39.777Z">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/Docker.png">
+<meta property="article:published_time" content="2023-01-25T09:03:26.000Z">
+<meta property="article:modified_time" content="2023-01-26T02:28:59.460Z">
 <meta property="article:author" content="MoMo">
-<meta property="article:tag" content="Esxi">
+<meta property="article:tag" content="AdguardHome">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/VMware.jpeg">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/Docker.png">
   
   
   
-  <title>ESXI_8.0_KEY - 菜鸟驿站</title>
+  <title>使用AdGuard Home自建DNS防污染、去广告 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ESXI_8.0_KEY"></span>
+            <span id="subtitle" data-typed-text="使用AdGuard Home自建DNS防污染、去广告"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 10:47" pubdate>
-          2023年1月25日 上午
+        <time datetime="2023-01-25 17:03" pubdate>
+          2023年1月25日 下午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          370 字
+          1.9k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          4 分钟
+          16 分钟
         
       </span>
     
@@ -283,16 +283,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ESXI_8.0_KEY</h1>
+            <h1 style="display: none">使用AdGuard Home自建DNS防污染、去广告</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ESXi</span> <span class="hljs-number">8</span> <span class="hljs-number">4</span>V492-<span class="hljs-number">44210</span>-<span class="hljs-number">48830</span>-<span class="hljs-number">931</span>GK-<span class="hljs-number">2</span>PRJ4<br><br><span class="hljs-attribute">VCSA</span> <span class="hljs-number">8</span> <span class="hljs-number">0</span>Z20K-<span class="hljs-number">07</span>JEH-<span class="hljs-number">08030</span>-<span class="hljs-number">908</span>EP-<span class="hljs-number">1</span>CUK4<br><br>   <br><br><br><span class="hljs-attribute">ESXi</span> <span class="hljs-number">8</span> <span class="hljs-number">4</span>F40H-<span class="hljs-number">4</span>ML1K-M89U0-<span class="hljs-number">0</span>C2N4-<span class="hljs-number">1</span>AKL4<br><br><span class="hljs-attribute">VCSA</span> <span class="hljs-number">8</span> <span class="hljs-number">0</span>F41K-<span class="hljs-number">0</span>MJ4H-M88U1-<span class="hljs-number">0</span>C3N0-<span class="hljs-number">0</span>A214<br><br> <br><br><span class="hljs-attribute">ESXi</span> <span class="hljs-number">8</span> HG00K-<span class="hljs-number">03</span>H8K-<span class="hljs-number">48929</span>-<span class="hljs-number">8</span>K1NP-<span class="hljs-number">3</span>LUJ4<br><br><span class="hljs-attribute">VCSA</span> <span class="hljs-number">8</span> <span class="hljs-number">4</span>F282-<span class="hljs-number">0</span>MLD2-M8869-T89G0-CF240<br> <br><br><span class="hljs-attribute">vSAN</span> <span class="hljs-number">8</span> NF212-<span class="hljs-number">08</span>H0K-<span class="hljs-number">488</span>X8-WV9X6-<span class="hljs-number">1</span>F024<br><br><span class="hljs-attribute">vSAN</span> <span class="hljs-number">8</span> witness JF61H-<span class="hljs-number">48</span>K8K-<span class="hljs-number">488</span>X9-W98Z0-<span class="hljs-number">1</span>FH24<br><br> <br><br><span class="hljs-attribute">Horizon</span> Enterprise v8.x <span class="hljs-number">0</span>G4DA-<span class="hljs-number">49</span>J81-M80R1-<span class="hljs-number">012</span>N4-<span class="hljs-number">86</span>KH4<br></code></pre></td></tr></table></figure>
+                <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>docker-compose.yml</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-symbol">version:</span> <span class="hljs-string">&quot;2&quot;</span><br><span class="hljs-symbol">services:</span><br>  <span class="hljs-symbol">adguardhome:</span><br>    <span class="hljs-symbol">network_mode:</span> host<br>    <span class="hljs-symbol">image:</span> adguard/adguardhome<br>    <span class="hljs-symbol">container_name:</span> <span class="hljs-title class_">AdguardHome</span><br>    <span class="hljs-symbol">environment:</span><br>      - <span class="hljs-variable constant_">TZ</span>=<span class="hljs-title class_">Asia</span>/<span class="hljs-title class_">Shanghai</span><br>    <span class="hljs-symbol">volumes:</span><br>      - <span class="hljs-regexp">/appdata/docker</span><span class="hljs-regexp">/AdGuardHome/workdir</span><span class="hljs-symbol">:/opt/adguardhome/work</span><br>      - <span class="hljs-regexp">/appdata/docker</span><span class="hljs-regexp">/AdGuardHome/confdir</span><span class="hljs-symbol">:/opt/adguardhome/conf</span><br>    <span class="hljs-symbol">restart:</span> <span class="hljs-keyword">unless</span>-stopped<br></code></pre></td></tr></table></figure>
 
 
 
+<h4 id="DNS-拦截列表"><a href="#DNS-拦截列表" class="headerlink" title="DNS 拦截列表"></a>DNS 拦截列表</h4><p><img src="https://raw.githubusercontent.com/HongChaGuan/momo/master/Hexo/dns-ljlb.jpg" srcset="/img/loading.gif" lazyload alt="dns-ljlb"></p>
+<p>编辑<code>AdGuardHome.yaml</code>，找到<code>filters</code>一栏，替换为如下规则</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">AdGuard</span> <span class="hljs-string">DNS</span> <span class="hljs-string">filter</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://adaway.org/hosts.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">AdAway</span> <span class="hljs-string">Default</span> <span class="hljs-string">Blocklist</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">2</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://www.malwaredomainlist.com/hostslist/hosts.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">MalwareDomainList.com</span> <span class="hljs-string">Hosts</span> <span class="hljs-string">List</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">4</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/adguard.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-adguard</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777687</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/easylist.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-easylist</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777688</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/domains.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-domains</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777689</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/surge.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-surge</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777690</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/surge2.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-surge2</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777691</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/anti-ad-for-dnsmasq.conf</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">adblock-for-dnsmasq</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777692</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/clash.yaml</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-clash</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777693</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://anti-ad.net/anti-ad-for-smartdns.conf</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">anti-ad-smartdns</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1635777695</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">neodevhost</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1655021687</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">https://cats-team.coding.net/p/adguard/d/AdRules/git/raw/main/adblock.txt</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">AdRules</span><br>  <span class="hljs-attr">id:</span> <span class="hljs-number">1655021688</span><br></code></pre></td></tr></table></figure>
 
+
+
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p><img src="https://raw.githubusercontent.com/HongChaGuan/momo/master/Hexo/dns-sz.jpg" srcset="/img/loading.gif" lazyload alt="dns-sz"></p>
+<p>上游 DNS 服务器</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">119.29.29.29</span><br><span class="hljs-number">223.5.5.5</span><br><span class="hljs-number">61.128.128.68</span><br><span class="hljs-number">61.128.192.68</span><br><span class="hljs-number">114.114.114.114</span><br>tls://dns.alidns.com<br>tcp://<span class="hljs-number">114</span>.<span class="hljs-number">114</span>.<span class="hljs-number">114</span>.<span class="hljs-number">114</span><br><span class="hljs-number">8.8.8.8</span><br>tcp://<span class="hljs-number">8</span>.<span class="hljs-number">8</span>.<span class="hljs-number">8</span>.<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+
+<p>Bootstrap DNS 服务器</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">114.114.114.114</span><br><span class="hljs-number">119.29.29.29</span><br><span class="hljs-number">223.6.6.6</span><br><span class="hljs-number">117.50.60.30</span><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -312,12 +324,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E8%99%9A%E6%8B%9F%E5%8C%96/Esxi/" class="category-chain-item">Esxi</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
   
   
 
@@ -334,7 +346,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Esxi/">#Esxi</a>
+        <a href="/tags/AdguardHome/">#AdguardHome</a>
       
     </div>
   
@@ -346,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ESXI_8.0_KEY</div>
-      <div>https://kuan.pages.dev/article/11ae3710.html</div>
+      <div>使用AdGuard Home自建DNS防污染、去广告</div>
+      <div>https://kuan.pages.dev/article/a4b7c8a7.html</div>
     </div>
     <div class="license-meta">
       
@@ -391,9 +403,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/article/2a40ac23.html" title="Docker安装">
+                      <a href="/article/c57c27f9.html" title="Hexo博客URL持久化">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker安装</span>
+                        <span class="hidden-mobile">Hexo博客URL持久化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -401,8 +413,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/article/bd0156ec.html" title="GitLab-CE和Runner安装">
-                        <span class="hidden-mobile">GitLab-CE和Runner安装</span>
+                      <a href="/article/4e67a04d.html" title="自建开源镜像站">
+                        <span class="hidden-mobile">自建开源镜像站</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

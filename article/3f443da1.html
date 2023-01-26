@@ -25,9 +25,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kuan.pages.dev/img/banner/NetWork.png">
 <meta property="article:published_time" content="2023-01-25T02:09:41.000Z">
-<meta property="article:modified_time" content="2023-01-25T09:38:47.183Z">
+<meta property="article:modified_time" content="2023-01-26T02:30:59.258Z">
 <meta property="article:author" content="MoMo">
-<meta property="article:tag" content="Docker,网卡">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="网卡">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://kuan.pages.dev/img/banner/NetWork.png">
   
@@ -234,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          2.2k 字
         
       </span>
     
@@ -245,7 +246,7 @@
         
         
         
-          25 分钟
+          19 分钟
         
       </span>
     
@@ -288,56 +289,46 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-创建docker网卡"><a href="#1-创建docker网卡" class="headerlink" title="1.创建docker网卡"></a>1.创建docker网卡</h2><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">[root@i ~]<span class="hljs-comment"># brctl addbr docker0</span><br>[root@i ~]<span class="hljs-comment"># ip addr add 192.168.42.1/24 dev docker0  </span><br><span class="hljs-comment"># 这里的ip是给docker内部用的, 随意配置一个即可</span><br>[root@i ~]<span class="hljs-comment"># ip link set dev docker0 up</span><br>[root@i ~]<span class="hljs-comment"># ip addr show docker0</span><br><span class="hljs-comment"># 查看docker</span><br>[root@i ~]<span class="hljs-comment"># systemctl restart docker</span><br>[root@i ~]<span class="hljs-comment"># systemctl restart docker</span><br><span class="hljs-comment"># 启动docker服务</span><br></code></pre></td></tr></table></figure>
+                <h4 id="创建Docker网卡"><a href="#创建Docker网卡" class="headerlink" title="创建Docker网卡"></a>创建Docker网卡</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">[root@i ~]<span class="hljs-comment"># brctl addbr docker0</span><br>[root@i ~]<span class="hljs-comment"># ip addr add 192.168.42.1/24 dev docker0  </span><br><span class="hljs-comment"># 这里的ip是给docker内部用的, 随意配置一个即可</span><br>[root@i ~]<span class="hljs-comment"># ip link set dev docker0 up</span><br>[root@i ~]<span class="hljs-comment"># ip addr show docker0</span><br><span class="hljs-comment"># 查看docker</span><br>[root@i ~]<span class="hljs-comment"># systemctl restart docker</span><br>[root@i ~]<span class="hljs-comment"># systemctl restart docker</span><br><span class="hljs-comment"># 启动docker服务</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="2-添加子网"><a href="#2-添加子网" class="headerlink" title="2.添加子网"></a>2.添加子网</h2><figure class="highlight golo"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs golo">[root<span class="hljs-meta">@i</span> ~]<span class="hljs-comment"># docker network create backend</span><br><span class="hljs-comment"># 这样我们就创建了backend子网，docker-compose就可以直接使用这个network</span><br><span class="hljs-comment"># 如果无法常见子网，则使用下面的命令，跳过安全问题</span><br> <br>[root<span class="hljs-meta">@i</span> ~]<span class="hljs-comment"># docker network create backend --subnet 172.24.24.0/24</span><br> <br>[root<span class="hljs-meta">@i</span> ~]<span class="hljs-comment"># docker network ls</span><br>NETWORK ID     NAME        DRIVER       SCOPE<br><span class="hljs-number">6</span>afff4d90f05    backend       bridge       <span class="hljs-keyword">local</span><br><span class="hljs-number">57</span>de7f32064e    bridge       bridge       <span class="hljs-keyword">local</span><br><span class="hljs-number">4</span>b44a5340d6e    host        host        <span class="hljs-keyword">local</span><br>ac8e8ffe243f    none        <span class="hljs-literal">null</span>        <span class="hljs-keyword">local</span><br></code></pre></td></tr></table></figure>
+<h4 id="添加子网"><a href="#添加子网" class="headerlink" title="添加子网"></a>添加子网</h4><figure class="highlight golo"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs golo">[root<span class="hljs-meta">@i</span> ~]<span class="hljs-comment"># docker network create backend</span><br><span class="hljs-comment"># 这样我们就创建了backend子网，docker-compose就可以直接使用这个network</span><br><span class="hljs-comment"># 如果无法常见子网，则使用下面的命令，跳过安全问题</span><br> <br>[root<span class="hljs-meta">@i</span> ~]<span class="hljs-comment"># docker network create backend --subnet 172.24.24.0/24</span><br> <br>[root<span class="hljs-meta">@i</span> ~]<span class="hljs-comment"># docker network ls</span><br>NETWORK ID     NAME        DRIVER       SCOPE<br><span class="hljs-number">6</span>afff4d90f05    backend       bridge       <span class="hljs-keyword">local</span><br><span class="hljs-number">57</span>de7f32064e    bridge       bridge       <span class="hljs-keyword">local</span><br><span class="hljs-number">4</span>b44a5340d6e    host        host        <span class="hljs-keyword">local</span><br>ac8e8ffe243f    none        <span class="hljs-literal">null</span>        <span class="hljs-keyword">local</span><br></code></pre></td></tr></table></figure>
 
 <p>这里可以看到有backend</p>
-<h2 id="3-删除网卡"><a href="#3-删除网卡" class="headerlink" title="3.删除网卡"></a>3.删除网卡</h2><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">用 ifconfig 发现有个叫 br-<span class="hljs-number">59</span>ec53121ef6 的网桥<span class="hljs-number">172.19.0.1</span>，<br>如果要删除：<br><br></code></pre></td></tr></table></figure>
-<p>docker network rm $(docker network ls)</p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>```undefined<br>ifconfig br-<span class="hljs-number">59</span>ec53121ef6 down<br>brctl delbr br-<span class="hljs-number">59</span>ec53121ef6<br></code></pre></td></tr></table></figure>
+<h4 id="删除网卡"><a href="#删除网卡" class="headerlink" title="删除网卡"></a>删除网卡</h4><p>用 ifconfig 发现有个叫br开头的<code> br-59ec53121ef6</code> 的网桥，使用如下命令会删除全部桥接网卡。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">docker network rm <span class="hljs-constructor">$(<span class="hljs-params">docker</span> <span class="hljs-params">network</span> <span class="hljs-params">ls</span>)</span><br></code></pre></td></tr></table></figure>
+
+<p>单一网卡删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker network <span class="hljs-built_in">rm</span> 网卡名<br></code></pre></td></tr></table></figure>
 
 <p>brctl命令安装：</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crystal">Centos系统<br><span class="hljs-variable">$ </span>yum install -y bridge-utils<br><br>Ubuntu系统   <br><span class="hljs-variable">$ </span>apt-get  install -y bridge-utils<br></code></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><br><br></code></pre></td></tr></table></figure>
-<p>[root@i ~]# brctl show<br>#查看网桥状态<br>bridge name   bridge id        STP enabled   interfaces<br>br-5db3fa0c465f     8000.02424cfb3937    no       veth038d483<br>                            veth2950f5c<br>                            veth669dc5e<br>                            veth715203f<br>                            veth9f31643<br>                            vethd0f5330<br>docker0     8000.3a4803cd6298    no       veth9d3badb<br>                            vethd7530fd<br>[root@i ~]# brctl delif &lt;网桥名&gt; &lt;端口名&gt;<br>#卸载网桥上的端口<br>[root@i ~]# ifconfig<br>#查看是否有网桥网卡名<br>[root@i ~]# ifconfig &lt;网桥名&gt; down<br>#关闭此网卡<br>[root@i ~]# brctl delbr &lt;网桥名&gt;<br>#删除网桥</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br><br>**补充：[Docker](https:<span class="hljs-regexp">//</span>www.anquanclub.cn<span class="hljs-regexp">/tag/</span>docker)-Compose 自动创建的网桥与局域网冲突的终极解决方案**<br><br><span class="hljs-comment">## 一、问题描述</span><br><br>在使用 docker-compose 部署应用时， docker 默认的网络模式是 bridge ，默认网段是 <span class="hljs-number">172.17</span>.<span class="hljs-number">0.1</span><span class="hljs-regexp">/16。十分不巧的是我们自己物理机的局域网也使用的是 172.18.0.1/</span><span class="hljs-number">16</span> 的网段。<br><br>在执行 docker-compose -f docker-compose.yml up -d 部署服务后，自动生成的网桥会依次使用 <span class="hljs-number">172.18</span>.x.x，然而悲催的事情发生了。docker 生成的网桥与局域网冲突了。<br><br>于是乎，面向百度编程的漫漫长路开始了… …，但是，通过一次次的百度和谷歌，找到好多好多复制来复制去的博客，最终一遍一遍的试错，最终也没有解决我的问题，于是乎，这篇含金量达到 <span class="hljs-number">99.9999999999999999999999999</span>% 的文章出炉了。<br><br>![图片[<span class="hljs-number">1</span>]-docker-compose创建网桥,添加子网,删除网卡的实现_docker-安全小天地](https:<span class="hljs-regexp">//im</span>ages.tnxw.com<span class="hljs-regexp">/i/</span><span class="hljs-number">2023</span><span class="hljs-regexp">/01/</span><span class="hljs-number">13</span>/<span class="hljs-number">63</span>c13392168d7.jpeg)<br><br>本次实验环节的 Docker 版本<br><br></code></pre></td></tr></table></figure>
-<p>[root@node100 docker-compose]# docker info | grep ‘Server Version’<br> Server Version: 19.03.12</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## 二、解决方案<br><br>停止 docker-compose 创建的容器<br><br></code></pre></td></tr></table></figure>
-<p>docker-compose -f docker-compose.yml down</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>操作 Docker 容器<br><br></code></pre></td></tr></table></figure>
-<h1 id="停止-Docker-容器"><a href="#停止-Docker-容器" class="headerlink" title="停止 Docker 容器"></a>停止 Docker 容器</h1><p>sudo systemctl stop docker</p>
-<h1 id="停止-docker0-网桥"><a href="#停止-docker0-网桥" class="headerlink" title="停止 docker0 网桥"></a>停止 docker0 网桥</h1><p>sudo ip link set dev docker0 down</p>
-<h1 id="删除-docker0-网桥"><a href="#删除-docker0-网桥" class="headerlink" title="删除 docker0 网桥"></a>删除 docker0 网桥</h1><p>sudo brctl delbr docker0</p>
-<h1 id="重置-iptables"><a href="#重置-iptables" class="headerlink" title="重置 iptables"></a>重置 iptables</h1><p>sudo iptables -t nat -F POSTROUTING</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><br><span class="hljs-selector-tag">P</span><span class="hljs-selector-class">.S</span><br><br></code></pre></td></tr></table></figure>
-<h1 id="linux-brctl-command-not-found，安装-brctl"><a href="#linux-brctl-command-not-found，安装-brctl" class="headerlink" title="linux brctl command not found，安装 brctl"></a>linux brctl command not found，安装 brctl</h1><p>yum install bridge-utils -y</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><br>修改 daemon.<span class="hljs-keyword">json</span><br><span class="hljs-keyword"></span><br></code></pre></td></tr></table></figure>
-<h1 id="编辑-daemon-json-文件"><a href="#编辑-daemon-json-文件" class="headerlink" title="编辑 daemon.json 文件"></a>编辑 daemon.json 文件</h1><p>vim &#x2F;etc&#x2F;docker&#x2F;daemon.json</p>
-<h1 id="添加如下内容，包含设置-Docker-容器的-IP-网段"><a href="#添加如下内容，包含设置-Docker-容器的-IP-网段" class="headerlink" title="添加如下内容，包含设置 Docker 容器的 IP 网段"></a>添加如下内容，包含设置 Docker 容器的 IP 网段</h1><p>“default-address-pools” : [<br>  {<br>   “base” : “192.168.0.0&#x2F;16”,<br>   “size” : 24<br>  }<br>]</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><br>P<span class="hljs-selector-class">.S</span><br><br>注意：如果 daemon<span class="hljs-selector-class">.json</span> 中包含了其它的内容，请切记语法格式的正确性，比如用逗号隔开。<br><br>重启 Docker 容器<br><br></code></pre></td></tr></table></figure>
-<p>sudo systemctl daemon-reload<br>sudo systemctl start docker</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>重新安装和启动 docker-compose 的命令<br><br></code></pre></td></tr></table></figure>
-<p>docker-compose -f docker-compose.yml up -d</p>
-<pre><code class="hljs">
-## 三、拓展方案
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Centos系统<br>$ yum <span class="hljs-keyword">install </span>-y <span class="hljs-keyword">bridge-utils</span><br><span class="hljs-keyword"></span><br>Ubuntu系统   <br>$ apt-get  <span class="hljs-keyword">install </span>-y <span class="hljs-keyword">bridge-utils</span><br></code></pre></td></tr></table></figure>
 
-[点击此处](https://www.anquanclub.cn/?golink=aHR0cHM6Ly9naXRodWIuY29tL2RvY2tlci9jb21wb3NlL2lzc3Vlcy80MzM2)获取 ISSUES 大佬们给出的一些解决方案
 
-方案一
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">[root@i ~]<span class="hljs-comment"># brctl show</span><br><span class="hljs-comment">#查看网桥状态</span><br>bridge name   bridge id        STP enabled   interfaces<br>br<span class="hljs-number">-5</span>db3fa0c465f     <span class="hljs-number">8000.02424</span>cfb3937    <span class="hljs-literal">no</span>       veth038d483<br>                            veth2950f5c<br>                            veth669dc5e<br>                            veth715203f<br>                            veth9f31643<br>                            vethd0f5330<br>docker0     <span class="hljs-number">8000.3</span>a4803cd6298    <span class="hljs-literal">no</span>       veth9d3badb<br>                            vethd7530fd<br>[root@i ~]<span class="hljs-comment"># brctl delif &lt;网桥名&gt; &lt;端口名&gt;</span><br><span class="hljs-comment">#卸载网桥上的端口</span><br>[root@i ~]<span class="hljs-comment"># ifconfig</span><br><span class="hljs-comment">#查看是否有网桥网卡名</span><br>[root@i ~]<span class="hljs-comment"># ifconfig &lt;网桥名&gt; down</span><br><span class="hljs-comment">#关闭此网卡</span><br>[root@i ~]<span class="hljs-comment"># brctl delbr &lt;网桥名&gt;</span><br><span class="hljs-comment">#删除网桥</span><br></code></pre></td></tr></table></figure>
 
-![图片](https://images.tnxw.com/i/2023/01/13/63c13399642c2.jpeg)
+<h4 id="解决Docker网桥与局域网冲突"><a href="#解决Docker网桥与局域网冲突" class="headerlink" title="解决Docker网桥与局域网冲突"></a>解决Docker网桥与局域网冲突</h4><h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><p>​	    在使用 docker-compose 部署应用时，docker 默认的网络模式是 bridge，默认网段是 172.17.0.1&#x2F;16。十分不巧的是我们自己物理机的局域网也使用的是 172.18.0.1&#x2F;16 的网段。在执行 docker-compose -f docker-compose.yml up -d 部署服务后，自动生成的网桥会依次使用 172.18.x.x，然而悲催的事情发生了。docker 生成的网桥与局域网冲突了。于是乎，面向百度编程的漫漫长路开始了，但是，通过一次次的百度和谷歌，找到好多好多复制来复制去的博客，最终一遍一遍的试错，最终也没有解决我的问题，于是乎，这篇含金量达到 99.9999999999999999999999999% 的文章出炉了。</p>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>停止 docker-compose 创建的容器</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">docker<span class="hljs-literal">-compose</span> <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.yml down<br></code></pre></td></tr></table></figure>
 
-方案二
+<p>brctl命令安装：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Centos系统<br>$ yum <span class="hljs-keyword">install </span>-y <span class="hljs-keyword">bridge-utils</span><br><span class="hljs-keyword"></span><br>Ubuntu系统   <br>$ apt-get  <span class="hljs-keyword">install </span>-y <span class="hljs-keyword">bridge-utils</span><br></code></pre></td></tr></table></figure>
 
-![图片2](https://images.tnxw.com/i/2023/01/13/63c1339c5e94a.jpeg)
+<p>操作 Docker 容器</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 停止 Docker 容器</span><br>sudo systemctl stop docker<br><span class="hljs-comment"># 停止 docker0 网桥</span><br>sudo<span class="hljs-built_in"> ip </span>link <span class="hljs-built_in">set</span> dev docker0 down<br><span class="hljs-comment"># 删除 docker0 网桥</span><br>sudo brctl delbr docker0<br><span class="hljs-comment"># 重置 iptables</span><br>sudo iptables -t<span class="hljs-built_in"> nat </span>-F POSTROUTING<br></code></pre></td></tr></table></figure>
 
-方案三
+<p>编辑 daemn.json 文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>docker/daemon.json<br></code></pre></td></tr></table></figure>
 
-![图片3](https://images.tnxw.com/i/2023/01/13/63c1339f87629.jpeg)
+<p>添加如下内容，包含设置 Docker 容器的 IP 网段</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-string">&quot;default-address-pools&quot;</span> : [<br>  &#123;<br>   <span class="hljs-string">&quot;base&quot;</span> : &quot;192.168.0.0/16&quot;,<br>   <span class="hljs-string">&quot;size&quot;</span> : 24<br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
 
-以上为个人经验，希望能给大家一个参考，也希望大家多多支持安全小天地。如有错误或未考虑完全的地方，望不吝赐教。
-</code></pre>
+<p>注意：如果 daemon.json 中包含了其它的内容，请切记语法格式的正确性，比如用逗号隔开。</p>
+<p>重启 Docker 容器</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nsis">sudo <span class="hljs-params">system</span>ctl daemon-reload<br>sudo <span class="hljs-params">system</span>ctl start docker<br></code></pre></td></tr></table></figure>
+
+<p>重新安装和启动 docker-compose 的命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">docker<span class="hljs-literal">-compose</span> <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.yml up <span class="hljs-literal">-d</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -356,12 +347,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
   
   
     <span>></span>
     
-  <a href="/categories/Linux/Docker/" class="category-chain-item">Docker</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/Docker/" class="category-chain-item">Docker</a>
   
   
 
@@ -378,7 +369,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Docker-%E7%BD%91%E5%8D%A1/">#Docker,网卡</a>
+        <a href="/tags/Docker/">#Docker</a>
+      
+        <a href="/tags/%E7%BD%91%E5%8D%A1/">#网卡</a>
       
     </div>
   
