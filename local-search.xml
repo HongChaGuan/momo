@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>修改用户文件夹的位置</title>
+    <link href="/article/b9f70a71.html"/>
+    <url>/article/b9f70a71.html</url>
+    
+    <content type="html"><![CDATA[<p>打开注册表编辑器<code>Win+R</code>，输入<code>regedit</code></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\<span class="hljs-keyword">User</span> <span class="hljs-title">Shell</span> Folders<br></code></pre></td></tr></table></figure><p>修改后重启生效</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+      <category>优化</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>优化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hexo安装</title>
     <link href="/article/dc9e160a.html"/>
     <url>/article/dc9e160a.html</url>
