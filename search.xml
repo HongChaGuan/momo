@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Linux挂载NFS</title>
+      <link href="/article/19355343.html"/>
+      <url>/article/19355343.html</url>
+      
+        <content type="html"><![CDATA[<h5 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h5><p>基于Debian的Linux发行版，请运行以下命令安装NFS文件系统挂载软件。</p><figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">apt <span class="hljs-keyword">update</span> <span class="hljs-variable">&amp;&amp;</span> apt install -y nfs-common<br></code></pre></td></tr></table></figure><p>基于RedHat的Linux发行版，请运行以下命令安装NFS文件系统挂载软件。</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y nfs-utils<br></code></pre></td></tr></table></figure><h5 id="挂载文件系统"><a href="#挂载文件系统" class="headerlink" title="挂载文件系统"></a>挂载文件系统</h5><p>先查服务端的共享目录，这里的IP地址是nfs服务器的地址。</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">showmount</span> -e <span class="hljs-number">10.0.0.10</span><br></code></pre></td></tr></table></figure><p>将服务端的目录挂载到本地</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mount -t nfs 10.0.0.10:/test /data<br></code></pre></td></tr></table></figure><h5 id="自动挂载文件系统"><a href="#自动挂载文件系统" class="headerlink" title="自动挂载文件系统"></a>自动挂载文件系统</h5><p>要在Linux系统启动时自动挂载NFS共享，请在<code>/etc/fstab</code>文件中添加一行。该行必须包含NFS服务器的主机名或IP地址，NFS共享目录以及本地计算机的挂载点。</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>fstab<br></code></pre></td></tr></table></figure><p>按照如下格式，更改IP地址和挂载路径。</p><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">10.0.0.10</span>:/test /data  nfs      defaults    <span class="hljs-number">0</span>       <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure><h5 id="卸载共享文件系统"><a href="#卸载共享文件系统" class="headerlink" title="卸载共享文件系统"></a>卸载共享文件系统</h5><p><code>umount</code>命令从目录树中卸载已挂载的文件系统，要卸载已挂载的NFS共享，请使用<code>umount</code>命令，后跟已挂载的目录或NFS共享目录。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">umount 10.0.0.10:/test<br>umount /data<br></code></pre></td></tr></table></figure><p>命令<code>fuser -m MOUNT_POINT</code>可帮助找我们到正在访问NFS共享目录的进程，<code>MOUNT_POINT</code>是挂载点。</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">fuser</span> -m /<span class="hljs-class"><span class="hljs-keyword">data</span></span><br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机 </category>
+          
+          <category> Linux </category>
+          
+          <category> 文档 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NFS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>修改用户文件夹的位置</title>
       <link href="/article/b9f70a71.html"/>
       <url>/article/b9f70a71.html</url>
@@ -12,6 +41,8 @@
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> Windows </category>
           
@@ -150,7 +181,7 @@
           
           <category> 技术分享 </category>
           
-          <category> 文档 </category>
+          <category> DNS </category>
           
       </categories>
       
@@ -174,6 +205,8 @@
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> Linux </category>
           
@@ -285,7 +318,7 @@
           
           <category> 技术分享 </category>
           
-          <category> Harbor </category>
+          <category> Docker </category>
           
       </categories>
       
@@ -309,6 +342,8 @@
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> Linux </category>
           
@@ -339,6 +374,8 @@
       
       <categories>
           
+          <category> 计算机 </category>
+          
           <category> Linux </category>
           
           <category> 手册 </category>
@@ -365,6 +402,8 @@
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> Linux </category>
           
@@ -397,8 +436,6 @@
           
           <category> 文档 </category>
           
-          <category> NextCloud </category>
-          
       </categories>
       
       
@@ -423,6 +460,8 @@
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> Windows </category>
           
@@ -453,7 +492,7 @@
           
           <category> 技术分享 </category>
           
-          <category> 文档 </category>
+          <category> 图床 </category>
           
       </categories>
       
@@ -538,7 +577,7 @@
           
           <category> 技术分享 </category>
           
-          <category> Harbor </category>
+          <category> Docker </category>
           
       </categories>
       

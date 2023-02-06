@@ -16,24 +16,24 @@
   <meta name="author" content="MoMo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Runner就像一个个的工人，而Gitlab-CI就是这些工人的一个管理中心，所有工人都要在Gitlab-CI里面登记注册，并且表明自己是为哪个工程服务的。当相应的工程发生变化时，Gitlab-CI就会通知相应的工人执行软件集成脚本。如下图所示">
+    <meta name="description" content="NFS网络文件系统是一种分布式文件系统协议，使您可以通过网络共享远程目录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitLab-CE和Runner安装">
-<meta property="og:url" content="https://drop.pub/article/bd0156ec.html">
+<meta property="og:title" content="Linux挂载NFS">
+<meta property="og:url" content="https://drop.pub/article/19355343.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="Runner就像一个个的工人，而Gitlab-CI就是这些工人的一个管理中心，所有工人都要在Gitlab-CI里面登记注册，并且表明自己是为哪个工程服务的。当相应的工程发生变化时，Gitlab-CI就会通知相应的工人执行软件集成脚本。如下图所示">
+<meta property="og:description" content="NFS网络文件系统是一种分布式文件系统协议，使您可以通过网络共享远程目录。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://drop.pub/img/banner/Gitlab.jpeg">
-<meta property="article:published_time" content="2023-01-25T02:45:49.000Z">
-<meta property="article:modified_time" content="2023-02-06T13:04:30.619Z">
+<meta property="og:image" content="https://drop.pub/img/banner/NFS.png">
+<meta property="article:published_time" content="2023-02-06T12:48:13.000Z">
+<meta property="article:modified_time" content="2023-02-06T13:19:21.341Z">
 <meta property="article:author" content="MoMo">
-<meta property="article:tag" content="GitLab">
+<meta property="article:tag" content="NFS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://drop.pub/img/banner/Gitlab.jpeg">
+<meta name="twitter:image" content="https://drop.pub/img/banner/NFS.png">
   
   
   
-  <title>GitLab-CE和Runner安装 - 菜鸟驿站</title>
+  <title>Linux挂载NFS - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="GitLab-CE和Runner安装"></span>
+            <span id="subtitle" data-typed-text="Linux挂载NFS"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 10:45" pubdate>
-          2023年1月25日 上午
+        <time datetime="2023-02-06 20:48" pubdate>
+          2023年2月6日 晚上
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          582 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          10 分钟
+          5 分钟
         
       </span>
     
@@ -283,19 +283,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">GitLab-CE和Runner安装</h1>
+            <h1 style="display: none">Linux挂载NFS</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="GitLab-CE和Gitlab-Runner安装"><a href="#GitLab-CE和Gitlab-Runner安装" class="headerlink" title="GitLab-CE和Gitlab-Runner安装"></a>GitLab-CE和Gitlab-Runner安装</h2><h2 id="1-GitLab-CE安装"><a href="#1-GitLab-CE安装" class="headerlink" title="1.GitLab-CE安装"></a>1.GitLab-CE安装</h2><h3 id="1-GitLab-CE"><a href="#1-GitLab-CE" class="headerlink" title="1.GitLab-CE"></a>1.GitLab-CE</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d \<br>--name Gitlab-CE \<br>-p <span class="hljs-number">22</span>:<span class="hljs-number">22</span> \<br>-p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> \<br>-p <span class="hljs-number">443</span>:<span class="hljs-number">443</span> \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/config:/</span>etc/gitlab \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/logs:/</span>var<span class="hljs-regexp">/log/gi</span>tlab \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-CE<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/opt/gi</span>tlab \<br>--restart always \<br>gitlab/gitlab-ce:latest<br></code></pre></td></tr></table></figure>
-<h3 id="2-root密码查看"><a href="#2-root密码查看" class="headerlink" title="2.root密码查看"></a>2.root密码查看</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">docker exec -it Gitlab-CE <span class="hljs-keyword">grep</span> <span class="hljs-string">&#x27;Password:&#x27;</span> <span class="hljs-regexp">/etc/gi</span>tlab/initial_root_password<br></code></pre></td></tr></table></figure>
+                <h5 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h5><p>基于Debian的Linux发行版，请运行以下命令安装NFS文件系统挂载软件。</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">apt <span class="hljs-keyword">update</span> <span class="hljs-variable">&amp;&amp;</span> apt install -y nfs-common<br></code></pre></td></tr></table></figure>
+
+<p>基于RedHat的Linux发行版，请运行以下命令安装NFS文件系统挂载软件。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y nfs-utils<br></code></pre></td></tr></table></figure>
 
 
-<h2 id="2-Gitlab-Runner安装"><a href="#2-Gitlab-Runner安装" class="headerlink" title="2.Gitlab-Runner安装"></a>2.Gitlab-Runner安装</h2><h3 id="1-安装Runner"><a href="#1-安装Runner" class="headerlink" title="1.安装Runner"></a>1.安装Runner</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d \<br>--name Gitlab-Runner \<br>-v <span class="hljs-regexp">/appdata/</span>docker<span class="hljs-regexp">/Gitlab/</span>Gitlab-Runner<span class="hljs-regexp">/config:/</span>etc/gitlab-runner \<br>-v <span class="hljs-regexp">/var/</span>run<span class="hljs-regexp">/docker.sock:/</span>var<span class="hljs-regexp">/run/</span>docker.sock \<br>--restart always \<br>gitlab/gitlab-runner:latest<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-注册Runner"><a href="#2-注册Runner" class="headerlink" title="2.注册Runner"></a>2.注册Runner</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">docker run <span class="hljs-params">--rm</span> \<br>-v <span class="hljs-string">/mnt/user/appdata/Gitlab/Gitlab-Runner/config</span>:<span class="hljs-string">/etc/gitlab-runner</span> gitlab/gitlab-runner register \<br><span class="hljs-params">--non-interactive</span> \<br><span class="hljs-params">--executor</span> <span class="hljs-string">&quot;docker&quot;</span> \<br><span class="hljs-params">--docker-image</span> alpine<span class="hljs-function">:latest</span> \<br><span class="hljs-params">--url</span> <span class="hljs-string">&quot;http://IP/&quot;</span> \<br><span class="hljs-params">--registration-token</span> <span class="hljs-string">&quot;Token&quot;</span> \<br><span class="hljs-params">--description</span> <span class="hljs-string">&quot;first-register-runner&quot;</span> \<br><span class="hljs-params">--tag-list</span> <span class="hljs-string">&quot;MicroServer,Home&quot;</span> \<br><span class="hljs-params">--run-untagged=</span><span class="hljs-string">&quot;true&quot;</span> \<br><span class="hljs-params">--locked=</span><span class="hljs-string">&quot;false&quot;</span> \<br><span class="hljs-params">--access-level=</span><span class="hljs-string">&quot;not_protected&quot;</span><br></code></pre></td></tr></table></figure>
+<h5 id="挂载文件系统"><a href="#挂载文件系统" class="headerlink" title="挂载文件系统"></a>挂载文件系统</h5><p>先查服务端的共享目录，这里的IP地址是nfs服务器的地址。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">showmount</span> -e <span class="hljs-number">10.0.0.10</span><br></code></pre></td></tr></table></figure>
 
+<p>将服务端的目录挂载到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mount -t nfs 10.0.0.10:/test /data<br></code></pre></td></tr></table></figure>
+
+<h5 id="自动挂载文件系统"><a href="#自动挂载文件系统" class="headerlink" title="自动挂载文件系统"></a>自动挂载文件系统</h5><p>要在Linux系统启动时自动挂载NFS共享，请在<code>/etc/fstab</code>文件中添加一行。该行必须包含NFS服务器的主机名或IP地址，NFS共享目录以及本地计算机的挂载点。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>fstab<br></code></pre></td></tr></table></figure>
+
+<p>按照如下格式，更改IP地址和挂载路径。</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">10.0.0.10</span>:/test /data  nfs      defaults    <span class="hljs-number">0</span>       <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="卸载共享文件系统"><a href="#卸载共享文件系统" class="headerlink" title="卸载共享文件系统"></a>卸载共享文件系统</h5><p><code>umount</code>命令从目录树中卸载已挂载的文件系统，要卸载已挂载的NFS共享，请使用<code>umount</code>命令，后跟已挂载的目录或NFS共享目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">umount 10.0.0.10:/test<br>umount /data<br></code></pre></td></tr></table></figure>
+
+<p>命令<code>fuser -m MOUNT_POINT</code>可帮助找我们到正在访问NFS共享目录的进程，<code>MOUNT_POINT</code>是挂载点。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">fuser</span> -m /<span class="hljs-class"><span class="hljs-keyword">data</span></span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -314,13 +331,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="category-chain-item">计算机</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/Git/" class="category-chain-item">Git</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/Linux/" class="category-chain-item">Linux</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/Linux/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
+  
+  
+
   
 
   
@@ -336,7 +360,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/GitLab/">#GitLab</a>
+        <a href="/tags/NFS/">#NFS</a>
       
     </div>
   
@@ -348,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>GitLab-CE和Runner安装</div>
-      <div>https://drop.pub/article/bd0156ec.html</div>
+      <div>Linux挂载NFS</div>
+      <div>https://drop.pub/article/19355343.html</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +385,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月25日</div>
+          <div>2023年2月6日</div>
         </div>
       
       
@@ -393,18 +417,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/article/11ae3710.html" title="ESXI_8.0_KEY">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ESXI_8.0_KEY</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/article/eede64bd.html" title="Harbor密码重置">
-                        <span class="hidden-mobile">Harbor密码重置</span>
+                      <a href="/article/b9f70a71.html" title="修改用户文件夹的位置">
+                        <span class="hidden-mobile">修改用户文件夹的位置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
