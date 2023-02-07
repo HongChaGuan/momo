@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>系统不能新建文件夹</title>
+      <link href="/article/c90b14c7.html"/>
+      <url>/article/c90b14c7.html</url>
+      
+        <content type="html"><![CDATA[<p>在运行框中输入<code>regedit</code>，这个时候就会弹出一个“注册表编辑器”的窗口。</p><p>按照以下顺序打开，没有<code>New</code>就新建一个<code>项</code>。</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">KEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New<br></code></pre></td></tr></table></figure><p>新建一个字符串值，在数值数据中输入{D969A300-E7FF-11d0-A93B-00A0C90F2719}这个数值，点击确定即可新建文件夹了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机 </category>
+          
+          <category> Windows </category>
+          
+          <category> 文档 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux挂载NFS</title>
       <link href="/article/19355343.html"/>
       <url>/article/19355343.html</url>
