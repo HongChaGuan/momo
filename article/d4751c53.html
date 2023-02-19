@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://drop.pub/img/banner/wow.jpeg">
 <meta property="article:published_time" content="2023-02-09T18:51:22.000Z">
-<meta property="article:modified_time" content="2023-02-10T14:55:33.712Z">
+<meta property="article:modified_time" content="2023-02-19T11:14:50.120Z">
 <meta property="article:author" content="MoMo">
 <meta property="article:tag" content="wow">
 <meta property="article:tag" content="Azerothcore">
@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.8k 字
         
       </span>
     
@@ -246,7 +246,7 @@
         
         
         
-          22 分钟
+          24 分钟
         
       </span>
     
@@ -303,10 +303,24 @@
 
 
 <h4 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h4><p>azerothcore-wotlk</p>
+<p>内网</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">cd<br>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://git.tnxw.com/Ming/azerothcore-wotlk.git --branch <span class="hljs-keyword">master</span> <span class="hljs-title">--single-branch</span> azerothcore --depth <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
-<p>mod-eluna</p>
+<p>外网</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">cd<br>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/azerothcore/azerothcore-wotlk.git --branch <span class="hljs-keyword">master</span> <span class="hljs-title">--single-branch</span> azerothcore --depth <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>mod-eluna、</p>
+<p>内网</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> azerothcore-wotlk/modules<br>git <span class="hljs-built_in">clone</span> https://git.tnxw.com/Ming/mod-eluna.git mod-eluna<br></code></pre></td></tr></table></figure>
+
+<p>外网</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd azerothcore-wotlk/modules<br>git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/azerothcore/m</span>od-eluna.git mod-eluna<br></code></pre></td></tr></table></figure>
+
+
 
 
 
@@ -330,12 +344,9 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">mysql -uroot -<span class="hljs-selector-tag">p</span> <br></code></pre></td></tr></table></figure>
 
 <p>docker方式安装的数据库</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">docker</span> exec -it mariadb bash<br>mysql -h <span class="hljs-number">127.0.0.1</span> -uroot -p<br></code></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">docker exec -<span class="hljs-keyword">it</span> mariadb bash<br>mysql -uroot -p<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;acore&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password&#x27;</span> <span class="hljs-keyword">WITH</span> MAX_QUERIES_PER_HOUR <span class="hljs-number">0</span> MAX_CONNECTIONS_PER_HOUR <span class="hljs-number">0</span> MAX_UPDATES_PER_HOUR <span class="hljs-number">0</span>;<br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> * . * <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;acore&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">OPTION</span>;<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> `acore_world` <span class="hljs-keyword">DEFAULT</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> UTF8MB4 <span class="hljs-keyword">COLLATE</span> utf8mb4_general_ci;<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> `acore_characters` <span class="hljs-keyword">DEFAULT</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> UTF8MB4 <span class="hljs-keyword">COLLATE</span> utf8mb4_general_ci;<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> `acore_auth` <span class="hljs-keyword">DEFAULT</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> UTF8MB4 <span class="hljs-keyword">COLLATE</span> utf8mb4_general_ci;<br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> `acore_world` . * <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;acore&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">OPTION</span>;<br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> `acore_characters` . * <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;acore&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">OPTION</span>;<br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> `acore_auth` . * <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;acore&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">OPTION</span>;<br></code></pre></td></tr></table></figure>
-
-<p>更改IP为本机地址</p>
-<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">use acore_auth;<br><span class="hljs-keyword">UPDATE</span> realmlist <span class="hljs-keyword">SET</span> address = <span class="hljs-string">&#x27;IP&#x27;</span> <span class="hljs-keyword">WHERE</span> id = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -361,6 +372,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./authserver<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./worldserver<br></code></pre></td></tr></table></figure>
+
+<p>更改IP为本机地址</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">use acore_auth;<br><span class="hljs-keyword">UPDATE</span> realmlist <span class="hljs-keyword">SET</span> address = <span class="hljs-string">&#x27;IP&#x27;</span> <span class="hljs-keyword">WHERE</span> id = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+
 
 <p>创建账号</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">account <span class="hljs-keyword">create</span> <span class="hljs-keyword">admin</span> <span class="hljs-keyword">password</span><br>account <span class="hljs-keyword">set</span> gmlevel <span class="hljs-keyword">admin</span> <span class="hljs-number">3</span> <span class="hljs-number">-1</span><br></code></pre></td></tr></table></figure>
