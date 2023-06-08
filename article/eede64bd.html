@@ -16,16 +16,16 @@
   <meta name="author" content="IKun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Harbor密码重置">
+    <meta name="description" content="Harbor忘记密码，密码重置、密码修改 、admin密码重置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Harbor密码重置">
 <meta property="og:url" content="https://kuan.pages.dev/article/eede64bd.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="Harbor密码重置">
+<meta property="og:description" content="Harbor忘记密码，密码重置、密码修改 、admin密码重置">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kuan.pages.dev/img/banner/Harbor.jpeg">
 <meta property="article:published_time" content="2023-01-25T02:44:34.000Z">
-<meta property="article:modified_time" content="2023-06-08T08:13:03.710Z">
+<meta property="article:modified_time" content="2023-06-08T15:02:33.731Z">
 <meta property="article:author" content="IKun">
 <meta property="article:tag" content="Harbor">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          508 字
+          417 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -276,19 +276,19 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Harbor忘记密码，密码重置、密码修改-、admin密码重置"><a href="#Harbor忘记密码，密码重置、密码修改-、admin密码重置" class="headerlink" title="Harbor忘记密码，密码重置、密码修改 、admin密码重置"></a>Harbor忘记密码，密码重置、密码修改 、admin密码重置</h1><h5 id="1-进入harbor-db的容器"><a href="#1-进入harbor-db的容器" class="headerlink" title="1.进入harbor-db的容器"></a>1.进入<code>harbor-db</code>的容器</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it harbor-db /bin/bash<br></code></pre></td></tr></table></figure>
+                <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h5 id="1-进入数据库容器"><a href="#1-进入数据库容器" class="headerlink" title="1.进入数据库容器"></a>1.进入数据库容器</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it harbor-db /bin/bash<br></code></pre></td></tr></table></figure>
 
-<h5 id="2-进入postgresql命令行"><a href="#2-进入postgresql命令行" class="headerlink" title="2.进入postgresql命令行"></a>2.进入postgresql命令行</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">psql -h postgresql -d postgres -U postgres <br></code></pre></td></tr></table></figure>
+<h5 id="2-进入数据库"><a href="#2-进入数据库" class="headerlink" title="2.进入数据库"></a>2.进入数据库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">psql -h postgresql -d postgres -U postgres <br></code></pre></td></tr></table></figure>
 
-<p>默认密码root123</p>
-<h5 id="3-切换到harbor所在的数据库"><a href="#3-切换到harbor所在的数据库" class="headerlink" title="3.切换到harbor所在的数据库"></a>3.切换到harbor所在的数据库</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift">\c registry<br></code></pre></td></tr></table></figure>
+<p>默认密码<code>root123</code></p>
+<h5 id="3-切换数据库"><a href="#3-切换数据库" class="headerlink" title="3.切换数据库"></a>3.切换数据库</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift">\c registry<br></code></pre></td></tr></table></figure>
 
-<h5 id="4-查看harbor-user表"><a href="#4-查看harbor-user表" class="headerlink" title="4.查看harbor_user表"></a>4.查看harbor_user表</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> user_id,username,password,creation_time,update_time,password_version  <span class="hljs-keyword">from</span> harbor_user;<br></code></pre></td></tr></table></figure>
+<h5 id="4-查看表"><a href="#4-查看表" class="headerlink" title="4.查看表"></a>4.查看表</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> user_id,username,password,creation_time,update_time,password_version  <span class="hljs-keyword">from</span> harbor_user;<br></code></pre></td></tr></table></figure>
 
-<h5 id="5-重置密码"><a href="#5-重置密码" class="headerlink" title="5.重置密码"></a>5.重置密码</h5><p>修改admin的密码，修改为初始化密码Harbor12345 ，修改好了之后登录web ui上再修改</p>
+<h5 id="5-重置密码"><a href="#5-重置密码" class="headerlink" title="5.重置密码"></a>5.重置密码</h5><p>修改admin的密码，修改为初始化密码Harbor12345 ，修改好了之后登录web ui上再修改。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">update harbor_user  <span class="hljs-built_in">set</span> salt=<span class="hljs-string">&#x27;&#x27;</span>,password=<span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-built_in">where</span>  user_id = 1;<br></code></pre></td></tr></table></figure>
 
-<h5 id="6-退出-q-退出postgresql，exit退出容器。"><a href="#6-退出-q-退出postgresql，exit退出容器。" class="headerlink" title="6.退出 \q 退出postgresql，exit退出容器。"></a>6.退出 \q 退出postgresql，exit退出容器。</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">\q<br><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
+<h5 id="6-退出"><a href="#6-退出" class="headerlink" title="6.退出"></a>6.退出</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">\q<br><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
 
 <h5 id="7-重启Harbor"><a href="#7-重启Harbor" class="headerlink" title="7.重启Harbor"></a>7.重启Harbor</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shqll">docker-compose down<br>docker-compose up  -d<br>docker-compose ps<br></code></pre></td></tr></table></figure>
                 
@@ -397,8 +397,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/article/6d2a3284.html" title="SSH密钥创建">
-                        <span class="hidden-mobile">SSH密钥创建</span>
+                      <a href="/article/6d2a3284.html" title="Linux SSH密钥创建">
+                        <span class="hidden-mobile">Linux SSH密钥创建</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

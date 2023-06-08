@@ -18,14 +18,14 @@
   
     <meta name="description" content="SSH 密钥是安全外壳 (SSH) 协议中使用的安全访问凭证。 SSH 密钥使用基于公钥基础设施 (PKI) 技术（数字身份认证和加密的黄金标准）的密钥对来提供安全且可扩展的认证方法。由于 SSH 协议广泛用于云服务、网络环境、文件传输工具、配置管理工具和其他依赖计算机的服务中的通信，大多数组织使用 SSH 密钥来验证身份并保护这些服务免受意外使用或恶意攻击。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH密钥创建">
+<meta property="og:title" content="Linux SSH密钥创建">
 <meta property="og:url" content="https://kuan.pages.dev/article/6d2a3284.html">
 <meta property="og:site_name" content="菜鸟驿站">
 <meta property="og:description" content="SSH 密钥是安全外壳 (SSH) 协议中使用的安全访问凭证。 SSH 密钥使用基于公钥基础设施 (PKI) 技术（数字身份认证和加密的黄金标准）的密钥对来提供安全且可扩展的认证方法。由于 SSH 协议广泛用于云服务、网络环境、文件传输工具、配置管理工具和其他依赖计算机的服务中的通信，大多数组织使用 SSH 密钥来验证身份并保护这些服务免受意外使用或恶意攻击。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kuan.pages.dev/img/banner/SSH.png">
 <meta property="article:published_time" content="2023-01-25T02:42:15.000Z">
-<meta property="article:modified_time" content="2023-06-08T08:13:03.718Z">
+<meta property="article:modified_time" content="2023-06-08T15:06:54.380Z">
 <meta property="article:author" content="IKun">
 <meta property="article:tag" content="密钥">
 <meta property="article:tag" content="SSH">
@@ -34,7 +34,7 @@
   
   
   
-  <title>SSH密钥创建 - 菜鸟驿站</title>
+  <title>Linux SSH密钥创建 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SSH密钥创建"></span>
+            <span id="subtitle" data-typed-text="Linux SSH密钥创建"></span>
           
         </div>
 
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          943 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          10 分钟
+          8 分钟
         
       </span>
     
@@ -272,20 +272,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SSH密钥创建</h1>
+            <h1 style="display: none">Linux SSH密钥创建</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="1-创建密钥"><a href="#1-创建密钥" class="headerlink" title="1.创建密钥"></a>1.创建密钥</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa -b 4096<br><span class="hljs-meta prompt_">#</span><span class="language-bash">执行创建命令，-b参数为指定密钥长度</span><br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/home/pi/.ssh/id_rsa): <br>Enter passphrase (empty for no passphrase): <br><span class="hljs-meta prompt_">#</span><span class="language-bash">设置密钥密码，可以直接回车跳过</span><br>Enter same passphrase again: <br><span class="hljs-meta prompt_">#</span><span class="language-bash">确认密码，可以直接回车跳过</span><br>Your identification has been saved in /home/pi/.ssh/id_rsa.<br><span class="hljs-meta prompt_">#</span><span class="language-bash">公钥</span><br>Your public key has been saved in /home/pi/.ssh/id_rsa.pub.<br><span class="hljs-meta prompt_">#</span><span class="language-bash">私钥</span><br>The key fingerprint is:<br>SHA256:B25KhIK5xNfR3j7SBi52+e2Z+t0K7Ouhg3IzRqxyuEE pi@Debian<br>The key&#x27;s randomart image is:<br>+---[RSA 4096]----+<br>|     ..          |<br>|.o  ....         |<br>|oo....o o        |<br>|.... . + o       |<br>|.  E  + S .      |<br>|  .  + X *.      |<br>|   .o * = o+     |<br>|   o.+ * oo.* .  |<br>|   .+ + oo*O.o.. |<br>+----[SHA256]-----+<br></code></pre></td></tr></table></figure>
+                <h3 id="1-创建密钥"><a href="#1-创建密钥" class="headerlink" title="1.创建密钥"></a>1.创建密钥</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa -b 4096<br><span class="hljs-meta prompt_">#</span><span class="language-bash">执行创建命令，-b参数为指定密钥长度</span><br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/home/user/.ssh/id_rsa): <br>Enter passphrase (empty for no passphrase): <br><span class="hljs-meta prompt_">#</span><span class="language-bash">设置密钥密码，可以直接回车跳过</span><br>Enter same passphrase again: <br><span class="hljs-meta prompt_">#</span><span class="language-bash">确认密码，可以直接回车跳过</span><br>Your identification has been saved in /home/user/.ssh/id_rsa.<br><span class="hljs-meta prompt_">#</span><span class="language-bash">公钥</span><br>Your public key has been saved in /home/user/.ssh/id_rsa.pub.<br><span class="hljs-meta prompt_">#</span><span class="language-bash">私钥</span><br>The key fingerprint is:<br>SHA256:B25KhIK5xNfR3j7SBi52+e2Z+t0K7Ouhg3IzRqxyuEE pi@Debian<br>The key&#x27;s randomart image is:<br>+---[RSA 4096]----+<br>|     ..          |<br>|.o  ....         |<br>|oo....o o        |<br>|.... . + o       |<br>|.  E  + S .      |<br>|  .  + X *.      |<br>|   .o * = o+     |<br>|   o.+ * oo.* .  |<br>|   .+ + oo*O.o.. |<br>+----[SHA256]-----+<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-检查-ssh下authorized-keys文件"><a href="#2-检查-ssh下authorized-keys文件" class="headerlink" title="2.检查.ssh下authorized_keys文件"></a>2.检查.ssh下<code>authorized_keys</code>文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@Debian:~# cd .ssh/<br>root@Debian:~# ls .ssh/<br>id_rsa  id_rsa.pub<br>root@Debian:~/.ssh# cat id_rsa.pub &gt;&gt; authorized_keys<br></code></pre></td></tr></table></figure>
+<h3 id="2-生成authorized-keys"><a href="#2-生成authorized-keys" class="headerlink" title="2.生成authorized_keys"></a>2.生成<code>authorized_keys</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd<br>cd .ssh/<br>cat id_rsa.pub &gt;&gt; authorized_keys<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-修改权限"><a href="#3-修改权限" class="headerlink" title="3.修改权限"></a>3.修改权限</h3><h4 id="修改-ssh的权限为700"><a href="#修改-ssh的权限为700" class="headerlink" title="修改.ssh的权限为700,"></a>修改<code>.ssh的权限为700</code>,</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@Debian:~# cd<br>root@Debian:~# chmod 700 .ssh<br>root@Debian:~# cd .ssh/<br></code></pre></td></tr></table></figure>
+<h3 id="3-修改权限"><a href="#3-修改权限" class="headerlink" title="3.修改权限"></a>3.修改权限</h3><h4 id="1-修改权限"><a href="#1-修改权限" class="headerlink" title="1.修改权限"></a>1.修改权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 700 .ssh<br></code></pre></td></tr></table></figure>
 
-<h4 id="authorized-keys的权限为600或者更严格的400"><a href="#authorized-keys的权限为600或者更严格的400" class="headerlink" title="authorized_keys的权限为600或者更严格的400"></a><code>authorized_keys</code>的权限为600或者更严格的400</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@Debian:~# cd<br>root@Debian:~# chmod 600 .ssh/authorized_keys<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 600 .ssh/authorized_keys<br></code></pre></td></tr></table></figure>
 
-<h3 id="4-修改ssh的配置"><a href="#4-修改ssh的配置" class="headerlink" title="4.修改ssh的配置"></a>4.修改ssh的配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/ssh/sshd_config<br></code></pre></td></tr></table></figure>
+<h3 id="4-修改ssh的配置文件"><a href="#4-修改ssh的配置文件" class="headerlink" title="4.修改ssh的配置文件"></a>4.修改ssh的配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/ssh/sshd_config<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 允许root登录，但是禁止root密码登录</span><br><span class="hljs-attribute">PermitRootLogin</span> prohibit-password<br> <br><span class="hljs-comment"># 通过RSA认证</span><br>RSAAuthentication <span class="hljs-literal">yes</span><br> <br><span class="hljs-comment"># 允许pubKey（id_rsa.pub）登录</span><br>PubkeyAuthentication <span class="hljs-literal">yes</span><br><br><span class="hljs-comment">#使用密码  no为不使用密码</span><br>PasswordAuthentication <span class="hljs-literal">yes</span>                        <br></code></pre></td></tr></table></figure>
 
@@ -344,7 +344,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SSH密钥创建</div>
+      <div>Linux SSH密钥创建</div>
       <div>https://kuan.pages.dev/article/6d2a3284.html</div>
     </div>
     <div class="license-meta">
