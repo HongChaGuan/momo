@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://drop.pub/img/banner/HuaWei-AC.jpg">
 <meta property="article:published_time" content="2022-07-10T14:30:00.000Z">
-<meta property="article:modified_time" content="2023-06-08T08:13:03.724Z">
+<meta property="article:modified_time" content="2023-06-08T08:45:43.563Z">
 <meta property="article:author" content="IKun">
 <meta property="article:tag" content="华为">
 <meta property="article:tag" content="AC+AP">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.6k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          10 分钟
+          14 分钟
         
       </span>
     
@@ -315,6 +315,9 @@
 
 
 <h4 id="4-ap组引用vap模板"><a href="#4-ap组引用vap模板" class="headerlink" title="4.ap组引用vap模板"></a>4.ap组引用vap模板</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wlan</span><br><span class="hljs-attribute">ap</span>-group name 组名<br><span class="hljs-attribute">vap</span>-profile Wlan名字-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G wlan <span class="hljs-number">1</span> radio <span class="hljs-number">0</span> //<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G射频信号引用Wlan名字-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G的vap模板<br><span class="hljs-attribute">vap</span>-profile Wlan名字-<span class="hljs-number">5</span>G wlan <span class="hljs-number">1</span> radio <span class="hljs-number">1</span> //<span class="hljs-number">5</span>G射频信号引用Wlan名字-<span class="hljs-number">5</span>G的vap模板<br><span class="hljs-attribute">vap</span>-profile WLAN-Guest wlan <span class="hljs-number">2</span> radio <span class="hljs-number">0</span><br><span class="hljs-attribute">vap</span>-profile WLAN-Guest wlan <span class="hljs-number">2</span> radio <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="华为AC简单配置无线"><a href="#华为AC简单配置无线" class="headerlink" title="华为AC简单配置无线"></a>华为AC简单配置无线</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">capwap</span> source interface vlan <span class="hljs-number">100</span><br><span class="hljs-attribute">wlan</span><br> <span class="hljs-attribute">regulatory</span>-domain-profile name default<br>  <span class="hljs-attribute">dca</span>-channel <span class="hljs-number">5</span>g channel-set <span class="hljs-number">36</span>,<span class="hljs-number">40</span>,<span class="hljs-number">44</span>,<span class="hljs-number">48</span>,<span class="hljs-number">52</span>,<span class="hljs-number">56</span>,<span class="hljs-number">60</span>,<span class="hljs-number">64</span>,<span class="hljs-number">149</span>,<span class="hljs-number">153</span>,<span class="hljs-number">157</span>,<span class="hljs-number">161</span><br>  <span class="hljs-attribute">dca</span>-channel <span class="hljs-number">5</span>g bandwidth <span class="hljs-number">80</span>mhz<br> <span class="hljs-attribute">ap</span>-group name office<br> <span class="hljs-attribute">ap</span>-id <span class="hljs-number">1</span> ap-mac <span class="hljs-number">00</span>e0-fcea-<span class="hljs-number">1640</span><br>  <span class="hljs-attribute">ap</span>-name office<br>  <span class="hljs-attribute">ap</span>-group office<br> <span class="hljs-attribute">ssid</span>-profile name office<br>  <span class="hljs-attribute">ssid</span> office<br> <span class="hljs-attribute">security</span>-profile name office<br>  <span class="hljs-attribute">security</span> wpa-wpa2 psk pass-phrase password aes-tkip<br> <span class="hljs-attribute">vap</span>-profile name office<br>  <span class="hljs-attribute">service</span>-vlan vlan-id id<br>  <span class="hljs-attribute">ssid</span>-profile office<br>  <span class="hljs-attribute">security</span>-profile office<br> <span class="hljs-attribute">ap</span>-group name office<br>  <span class="hljs-attribute">vap</span>-profile office wlan <span class="hljs-number">1</span> radio <span class="hljs-literal">all</span><br></code></pre></td></tr></table></figure>
 
 
 
