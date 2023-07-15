@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Docker安装Alist</title>
+    <link href="/article/58101361.html"/>
+    <url>/article/58101361.html</url>
+    
+    <content type="html"><![CDATA[<h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><h5 id="1-docker-cli"><a href="#1-docker-cli" class="headerlink" title="1.docker-cli"></a>1.docker-cli</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name=<span class="hljs-string">&quot;alist&quot;</span> xhofe/alist:latest<br></code></pre></td></tr></table></figure><h5 id="2-docker-compose"><a href="#2-docker-compose" class="headerlink" title="2.docker-compose"></a>2.docker-compose</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attr">services:</span><br>    <span class="hljs-attr">alist:</span><br>        <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>        <span class="hljs-attr">volumes:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;/etc/alist:/opt/alist/data&#x27;</span><br>        <span class="hljs-attr">ports:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;5244:5244&#x27;</span><br>        <span class="hljs-attr">environment:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">PUID=0</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">PGID=0</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">UMASK=022</span><br>        <span class="hljs-attr">container_name:</span> <span class="hljs-string">alist</span><br>        <span class="hljs-attr">image:</span> <span class="hljs-string">&#x27;xhofe/alist:latest&#x27;</span><br></code></pre></td></tr></table></figure><h5 id="3-查看管理员信息"><a href="#3-查看管理员信息" class="headerlink" title="3.查看管理员信息"></a>3.查看管理员信息</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it alist ./alist admin<br></code></pre></td></tr></table></figure><h4 id="2-反向代理"><a href="#2-反向代理" class="headerlink" title="2.反向代理"></a>2.反向代理</h4><h5 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="1.配置文件"></a>1.配置文件</h5><p>打开<code>config.json</code>，编辑<code>site_url</code>字段。</p><p>改为自己的网站 URL，比如<code>https://pan.xxx.com</code>，这个地址会在程序中的某些地方使用，如果不设置这个字段，一些功能可能无法正常工作，比如</p><ul><li>本地存储的缩略图</li><li>开启 web 代理后的预览</li><li>开启 web 代理后的下载地址</li><li>反向代理至二级目录</li></ul><p>URL 链接结尾请勿携带 <code>/</code> ，参照如下示例，否则也将无法使用上述功能或出现异常</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"># 正确写法：<br><span class="hljs-attr">&quot;site_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://pan.xxx.com&quot;</span><span class="hljs-punctuation">,</span><br># 错误写法：<br><span class="hljs-attr">&quot;site_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://pan.xxx.com/&quot;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure><h5 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2.Nginx"></a>2.Nginx</h5><p>在网站配置文件的 server 字段中添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs conf">location / &#123;<br>  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br>  proxy_set_header X-Forwarded-Proto $scheme;<br>  proxy_set_header Host $http_host;<br>  proxy_set_header X-Real-IP $remote_addr;<br>  proxy_set_header Range $http_range;<br>proxy_set_header If-Range $http_if_range;<br>  proxy_redirect off;<br>  proxy_pass http://127.0.0.1:5244;<br>  #修改为本机IP,docker网络模式为host则无需修改<br>  # the max size of file to upload<br>  client_max_body_size 20000m;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>应用</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网盘</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于Cloudreve自建网盘，快速搭建公私兼备的网盘系统</title>
     <link href="/article/3ead5949.html"/>
     <url>/article/3ead5949.html</url>
