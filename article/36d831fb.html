@@ -16,21 +16,34 @@
   <meta name="author" content="IKun">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://kuan.pages.dev/archives/index.html">
+    <meta name="description" content="WinPcap4.1.3安装失败解决方法，A newer version of winpcap...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WinPcap安装失败解">
+<meta property="og:url" content="https://kuan.pages.dev/article/36d831fb.html">
 <meta property="og:site_name" content="菜鸟驿站">
+<meta property="og:description" content="WinPcap4.1.3安装失败解决方法，A newer version of winpcap...">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/WinPcap.jpg">
+<meta property="article:published_time" content="2023-08-14T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-14T05:56:54.885Z">
 <meta property="article:author" content="IKun">
+<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/WinPcap.jpg">
   
   
   
-  <title>归档 - 菜鸟驿站</title>
+  <title>WinPcap安装失败解 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -80,7 +93,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -180,15 +193,55 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/example.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg/example1.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="WinPcap安装失败解"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-14 13:00" pubdate>
+          2023年8月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          120 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          2 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -204,100 +257,203 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 41 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2023</p>
-    
-    <a href="/article/36d831fb.html" class="list-group-item list-group-item-action">
-      <time>08-14</time>
-      <div class="list-group-item-title">WinPcap安装失败解</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">WinPcap安装失败解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h4 id="WinPcap安装失败"><a href="#WinPcap安装失败" class="headerlink" title="WinPcap安装失败"></a>WinPcap安装失败</h4><p>找到相应文件，扩展名修改成如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">C:\Windows\SysWOW64 的wpcap.dll改成 wpcap<span class="hljs-selector-class">.dll</span><span class="hljs-selector-class">.old</span><br><br>C:\Windows\SysWOW64的packet.dll改成 packet<span class="hljs-selector-class">.dll</span>.old<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/article/931b40db.html" class="list-group-item list-group-item-action">
-      <time>08-10</time>
-      <div class="list-group-item-title">交换路由基本配置</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
   
-    
-    <a href="/article/2336273f.html" class="list-group-item list-group-item-action">
-      <time>07-25</time>
-      <div class="list-group-item-title">Windows打印IP信息</div>
-    </a>
   
+    <span>></span>
     
-    <a href="/article/3ead5949.html" class="list-group-item list-group-item-action">
-      <time>06-09</time>
-      <div class="list-group-item-title">基于Cloudreve自建网盘，快速搭建公私兼备的网盘系统</div>
-    </a>
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Windows/" class="category-chain-item">Windows</a>
   
-    
-    <a href="/article/b437c100.html" class="list-group-item list-group-item-action">
-      <time>06-08</time>
-      <div class="list-group-item-title">基于ZeroTier、Tailscale搭建内网穿透</div>
-    </a>
   
+    <span>></span>
     
-    <a href="/article/f74d3b78.html" class="list-group-item list-group-item-action">
-      <time>06-07</time>
-      <div class="list-group-item-title">文档模板</div>
-    </a>
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Windows/%E7%BD%91%E7%BB%9C/" class="category-chain-item">网络</a>
   
-    
-    <a href="/article/e5f1e82a.html" class="list-group-item list-group-item-action">
-      <time>06-07</time>
-      <div class="list-group-item-title">私有魔兽注册网站</div>
-    </a>
   
-    
-    <a href="/article/48efa1b7.html" class="list-group-item list-group-item-action">
-      <time>06-07</time>
-      <div class="list-group-item-title">UOS 开机提示解锁登录密码环问题</div>
-    </a>
+
   
-    
-    <a href="/article/c42a1fba.html" class="list-group-item list-group-item-action">
-      <time>06-07</time>
-      <div class="list-group-item-title">Linux关闭默认端口</div>
-    </a>
+
   
+
+      </span>
     
-    <a href="/article/5d226e5a.html" class="list-group-item list-group-item-action">
-      <time>06-07</time>
-      <div class="list-group-item-title">常用Docker镜像compose</div>
-    </a>
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C/">#网络</a>
+      
+    </div>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/#board">2</a><a class="page-number" href="/archives/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/#board">5</a><a class="extend next" rel="next" href="/archives/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>WinPcap安装失败解</div>
+      <div>https://kuan.pages.dev/article/36d831fb.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>IKun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/article/931b40db.html" title="交换路由基本配置">
+                        <span class="hidden-mobile">交换路由基本配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -391,6 +547,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
