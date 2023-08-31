@@ -58,7 +58,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kuan.pages.dev","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kuan.pages.dev","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -222,18 +222,540 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/752edc47.html" target="_self">
+          <img src="/img/banner/wow.jpeg" srcset="/img/loading.gif" lazyload alt="基于TrinityCore编译魔兽世界服务端">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/752edc47.html" target="_self">
+          基于TrinityCore编译魔兽世界服务端
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/752edc47.html" target="_self">
+        <div>
+          基于TrinityCore构建魔兽世界服务端
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-23 21:16" pubdate>
+              2023-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BD%B1%E9%9F%B3%E5%A8%B1%E4%B9%90/" class="category-chain-item">影音娱乐</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%BD%B1%E9%9F%B3%E5%A8%B1%E4%B9%90/%E6%B8%B8%E6%88%8F/" class="category-chain-item">游戏</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B8%B8%E6%88%8F/">#游戏</a>
+            
+              <a href="/tags/%E9%AD%94%E5%85%BD%E4%B8%96%E7%95%8C/">#魔兽世界</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/7cc63a46.html" target="_self">
+          <img src="/img/banner/Linux.png" srcset="/img/loading.gif" lazyload alt="Debian 更改系统语言">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/7cc63a46.html" target="_self">
+          Debian 更改系统语言
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/7cc63a46.html" target="_self">
+        <div>
+          Debian 更改系统语言要支持区域设置，首先要安装locales软件包： 1apt-get install locales  首先查看当前语言环境 1env | grep LANG	    123export LANG=en_US.UTF-8#export LANG=zh_cn.UTF-8#注意  en表示语言，US表示国家，UTF-8表示编码  重新配置 locales，然后重启 12dpkg
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-23 21:00" pubdate>
+              2023-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/d4751c53.html" target="_self">
+          <img src="/img/banner/wow.jpeg" srcset="/img/loading.gif" lazyload alt="基于azerothcore-wotlk编译魔兽335服务端">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/d4751c53.html" target="_self">
+          基于azerothcore-wotlk编译魔兽335服务端
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/d4751c53.html" target="_self">
+        <div>
+          基于 azerothcore-wotlk 构建 wow 335服务端
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-10 02:51" pubdate>
+              2023-02-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BD%B1%E9%9F%B3%E5%A8%B1%E4%B9%90/" class="category-chain-item">影音娱乐</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%BD%B1%E9%9F%B3%E5%A8%B1%E4%B9%90/%E6%B8%B8%E6%88%8F/" class="category-chain-item">游戏</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B8%B8%E6%88%8F/">#游戏</a>
+            
+              <a href="/tags/%E9%AD%94%E5%85%BD%E4%B8%96%E7%95%8C/">#魔兽世界</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/c90b14c7.html" target="_self">
+          <img src="/img/banner/Windows11.jpeg" srcset="/img/loading.gif" lazyload alt="系统不能新建文件夹">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/c90b14c7.html" target="_self">
+          系统不能新建文件夹
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/c90b14c7.html" target="_self">
+        <div>
+          系统不能新建文件夹
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-07 22:26" pubdate>
+              2023-02-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BC%98%E5%8C%96/">#优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/19355343.html" target="_self">
+          <img src="/img/banner/NFS.png" srcset="/img/loading.gif" lazyload alt="Debian开启NFS并挂载其它实例">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/19355343.html" target="_self">
+          Debian开启NFS并挂载其它实例
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/19355343.html" target="_self">
+        <div>
+          网络文件系统（英语：Network File System，缩写作 NFS）是一种分布式文件系统协议，其功能旨在允许客户端主机可以像访问本地存储一样通过网络访问服务器端文件。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-06 20:48" pubdate>
+              2023-02-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/NFS/">#NFS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/b9f70a71.html" target="_self">
+          <img src="/img/banner/Windows11.jpeg" srcset="/img/loading.gif" lazyload alt="修改用户文件夹的位置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/b9f70a71.html" target="_self">
+          修改用户文件夹的位置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/b9f70a71.html" target="_self">
+        <div>
+          修改Windows中默认用户文件夹的存放位置
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-05 16:58" pubdate>
+              2023-02-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Windows/" class="category-chain-item">Windows</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BC%98%E5%8C%96/">#优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/article/dc9e160a.html" target="_self">
+          <img src="/img/banner/Hexo.jpeg" srcset="/img/loading.gif" lazyload alt="Hexo安装">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/article/dc9e160a.html" target="_self">
+          Hexo安装
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/article/dc9e160a.html" target="_self">
+        <div>
+          Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入hexo官网进行详细查看。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-05 14:50" pubdate>
+              2023-02-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/article/4018c61d.html" target="_self">
           <img src="/img/banner/yingshi.jpg" srcset="/img/loading.gif" lazyload alt="影视下载">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/article/4018c61d.html" target="_self">
           影视下载
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/article/4018c61d.html" target="_self">
@@ -302,12 +824,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/article/211e40d5.html" target="_self">
           为知笔记
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/article/211e40d5.html" target="_self">
@@ -376,12 +898,12 @@
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
+      <h2 class="index-header">
         
         <a href="/article/c57c27f9.html" target="_self">
           Hexo博客URL持久化
         </a>
-      </h1>
+      </h2>
 
       
       <a class="index-excerpt " href="/article/c57c27f9.html" target="_self">
@@ -415,7 +937,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BA%94%E7%94%A8/" class="category-chain-item">应用</a>
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
   
   
 
@@ -433,526 +955,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Hexo/">#Hexo</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/a4b7c8a7.html" target="_self">
-          <img src="/img/banner/Docker.png" srcset="/img/loading.gif" lazyload alt="AdGuard Home 安装及使用指南">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/a4b7c8a7.html" target="_self">
-          AdGuard Home 安装及使用指南
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/a4b7c8a7.html" target="_self">
-        <div>
-          如果你有在多设备上对去除广告的需求，AdGuard Home 或许是一个不错的选择，它能够给你带来一个清爽的网络世界。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 17:03" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BA%94%E7%94%A8/" class="category-chain-item">应用</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AdguardHome/">#AdguardHome</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/4e67a04d.html" target="_self">
-          <img src="/img/banner/Linux.png" srcset="/img/loading.gif" lazyload alt="自建开源镜像站">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/4e67a04d.html" target="_self">
-          自建开源镜像站
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/4e67a04d.html" target="_self">
-        <div>
-          自建开源镜像站用于内网服务器
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 13:44" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BA%90/">#源</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/2a40ac23.html" target="_self">
-          <img src="/img/banner/Docker.png" srcset="/img/loading.gif" lazyload alt="Docker安装">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/2a40ac23.html" target="_self">
-          Docker安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/2a40ac23.html" target="_self">
-        <div>
-          Docker 是一种开源容器化技术，用于构建和容器化应用程序。Docker 使用客户端-服务器架构。Docker客户端与 Docker守护进程对话，后者负责构建、运行和分发 Docker 容器的繁重工作。 Docker 客户端和守护程序可以在同一系统上运行，或者您可以将 Docker 客户端连接到远程 Docker 守护程序。Docker 客户端和守护进程使用 REST API、UNIX 套接字或
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 10:57" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BA%94%E7%94%A8/" class="category-chain-item">应用</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Docker/">#Docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/11ae3710.html" target="_self">
-          <img src="/img/banner/VMware.jpeg" srcset="/img/loading.gif" lazyload alt="ESXI_8.0_KEY">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/11ae3710.html" target="_self">
-          ESXI_8.0_KEY
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/11ae3710.html" target="_self">
-        <div>
-          ESXI_8密钥
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 10:47" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%99%9A%E6%8B%9F%E8%9E%8D%E5%90%88/" class="category-chain-item">虚拟融合</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E8%99%9A%E6%8B%9F%E8%9E%8D%E5%90%88/Esxi/" class="category-chain-item">Esxi</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Esxi/">#Esxi</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/bd0156ec.html" target="_self">
-          <img src="/img/banner/Gitlab.jpeg" srcset="/img/loading.gif" lazyload alt="GitLab-CE和Runner安装">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/bd0156ec.html" target="_self">
-          GitLab-CE和Runner安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/bd0156ec.html" target="_self">
-        <div>
-          Runner就像一个个的工人，而Gitlab-CI就是这些工人的一个管理中心，所有工人都要在Gitlab-CI里面登记注册，并且表明自己是为哪个工程服务的。当相应的工程发生变化时，Gitlab-CI就会通知相应的工人执行软件集成脚本。如下图所示
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 10:45" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BA%94%E7%94%A8/" class="category-chain-item">应用</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/GitLab/">#GitLab</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/eede64bd.html" target="_self">
-          <img src="/img/banner/Harbor.jpeg" srcset="/img/loading.gif" lazyload alt="Harbor密码重置">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/eede64bd.html" target="_self">
-          Harbor密码重置
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/eede64bd.html" target="_self">
-        <div>
-          Harbor忘记密码，密码重置、密码修改 、admin密码重置
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 10:44" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Docker/" class="category-chain-item">Docker</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Harbor/">#Harbor</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/article/6d2a3284.html" target="_self">
-          <img src="/img/banner/SSH.png" srcset="/img/loading.gif" lazyload alt="Linux SSH密钥创建">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/article/6d2a3284.html" target="_self">
-          Linux SSH密钥创建
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/article/6d2a3284.html" target="_self">
-        <div>
-          SSH 密钥是安全外壳 (SSH) 协议中使用的安全访问凭证。 SSH 密钥使用基于公钥基础设施 (PKI) 技术（数字身份认证和加密的黄金标准）的密钥对来提供安全且可扩展的认证方法。由于 SSH 协议广泛用于云服务、网络环境、文件传输工具、配置管理工具和其他依赖计算机的服务中的通信，大多数组织使用 SSH 密钥来验证身份并保护这些服务免受意外使用或恶意攻击。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-01-25 10:42" pubdate>
-              2023-01-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AF%86%E9%92%A5/">#密钥</a>
-            
-              <a href="/tags/SSH/">#SSH</a>
             
           </div>
         

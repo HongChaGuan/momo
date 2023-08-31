@@ -1,0 +1,832 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/wztb.png">
+  <link rel="icon" href="/img/bg/wztb.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="IKun">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="华为VRRP+MSTP组网实验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为VRRP+MSTP组网实验">
+<meta property="og:url" content="https://kuan.pages.dev/article/738766b7.html">
+<meta property="og:site_name" content="菜鸟驿站">
+<meta property="og:description" content="华为VRRP+MSTP组网实验">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/HuaWei-Routers.png">
+<meta property="article:published_time" content="2023-08-21T14:30:00.000Z">
+<meta property="article:modified_time" content="2023-08-30T02:41:58.974Z">
+<meta property="article:author" content="IKun">
+<meta property="article:tag" content="交换路由">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/HuaWei-Routers.png">
+  
+  
+  
+  <title>华为VRRP+MSTP组网实验 - 菜鸟驿站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"kuan.pages.dev","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>菜鸟驿站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/example1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华为VRRP+MSTP组网实验"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-21 22:30" pubdate>
+          2023年8月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">华为VRRP+MSTP组网实验</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h4 id="Eth-Trunk"><a href="#Eth-Trunk" class="headerlink" title="Eth-Trunk"></a>Eth-Trunk</h4><p>SW1 和 SW2 分别通过 GE0&#x2F;0&#x2F;3，GE0&#x2F;0&#x2F;4 和 GE0&#x2F;0&#x2F;5 接口相互连接， 把这三个接口捆绑成一个逻辑接口，使用的模式为 static-lacp。 </p>
+<p>在SW1和SW2上都配置如下命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cobol">interface Eth-Trunk 1<br> port link-type trunk<br> port trunk allow-pass vlan 2 to 4094<br> mode lacp-static<br> max active-linknumber 2<br> trunkport GigabitEthernet 0/0/3 0/0/4 0/0/5<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">[SW1-GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">3</span>]lacp priority <span class="hljs-number">1000</span><br>[SW1-GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">4</span>]lacp priority <span class="hljs-number">1500</span><br>[SW1-GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">5</span>]lacp priority <span class="hljs-number">2000</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>接口都配置不同的优先级，主要作用是让ge 0&#x2F;0&#x2F;3和ge 0&#x2F;0&#x2F;4为活动端口，ge 0&#x2F;0&#x2F;5为备份端口，当端口端口其中一条链路断开时，ge 0&#x2F;0&#x2F;5口会迅速抢占成为活动端口。</p>
+<p>如果有三台或者三台以上的设备时才都需要在全部设备配置LACP系统优先级，活动端口数量，抢占功能。</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">interface Eth-Trunk 1</td>
+<td align="left">进入以太网聚合接口配置模式</td>
+</tr>
+<tr>
+<td align="left">port link-type trunk</td>
+<td align="left">配置接口为聚合接口，并且设置链路类型为 Trunk</td>
+</tr>
+<tr>
+<td align="left">port trunk allow-pass vlan 2 to 4094</td>
+<td align="left">设置该聚合接口允许通过的 VLAN 范围为从 VLAN 2 到 VLAN 4094</td>
+</tr>
+<tr>
+<td align="left">mode lacp-static</td>
+<td align="left">将聚合接口的工作模式设置为静态 LACP 模式</td>
+</tr>
+<tr>
+<td align="left">max active-linknumber 2</td>
+<td align="left">设置该聚合接口最大的主动链路数为 2 条，这样两台设备之间最大可用的带宽为 2G。</td>
+</tr>
+<tr>
+<td align="left">trunkport GigabitEthernet</td>
+<td align="left">添加成员端口</td>
+</tr>
+<tr>
+<td align="left">lacp priority 4096</td>
+<td align="left">配置LACP系统优先级,使设备为主动端或者设置端口优先级</td>
+</tr>
+<tr>
+<td align="left">lacp preempt enable</td>
+<td align="left">开启抢占功能</td>
+</tr>
+<tr>
+<td align="left">lacp preempt delay 10</td>
+<td align="left">设置抢占时间为10秒</td>
+</tr>
+</tbody></table>
+<h4 id="STP"><a href="#STP" class="headerlink" title="STP"></a>STP</h4><p>所有的交换运行 MSTP，MSTP 域名为 huawei，修订等级为 1。<br>额外创建两个实例，将 VLAN10、20、30 划分进实例 1，VLAN50、60 划分 进实例 2。</p>
+<p>在交换机进行相应的配置，使 PC 或者路由器接入立即能进入转发状态， 并且配置相应的保护功能，收到 BPDU 接口会被关闭。</p>
+<p>所有的交换都配置如下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cobol">stp region-configuration<br> region-name huawei<br> revision-level 1<br> instance 1 vlan 10 20 30<br> instance 2 vlan 50 60<br> active region-configuration<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">stp region-configuration</td>
+<td align="left">进入 STP 区域配置模式</td>
+</tr>
+<tr>
+<td align="left">region-name huawei</td>
+<td align="left">配置 STP 区域名称为 huawei</td>
+</tr>
+<tr>
+<td align="left">revision-level 1</td>
+<td align="left">配置 STP 区域的版本号为 1</td>
+</tr>
+<tr>
+<td align="left">instance 1 vlan 10 20 30</td>
+<td align="left">配置 STP 区域实例 1 包含 VLAN 10 20 30</td>
+</tr>
+<tr>
+<td align="left">instance 2 vlan 50 60</td>
+<td align="left">配置 STP 区域实例 2 包含 VLAN 50 60</td>
+</tr>
+<tr>
+<td align="left">active region-configuration</td>
+<td align="left">激活 STP 区域配置</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> dis stp instance 1    可用于显示 STP 区域实例 1 的状态信息</p>
+</blockquote>
+<p>要求SW1为实例1的根桥，实例2的备份根桥；SW2为实例2的根 桥，实例 1 的备份根桥。</p>
+<p>SW1：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">stp</span> <span class="hljs-keyword">instance</span> <span class="hljs-number">1</span> root primary<br><span class="hljs-title">stp</span> <span class="hljs-keyword">instance</span> <span class="hljs-number">2</span> root secondary<br></code></pre></td></tr></table></figure>
+
+<p>SW2：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">stp</span> <span class="hljs-keyword">instance</span> <span class="hljs-number">1</span> root secondary<br><span class="hljs-title">stp</span> <span class="hljs-keyword">instance</span> <span class="hljs-number">2</span> root primary<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p> dis stp brief     可用于显示 STP 网络的摘要信息。</p>
+</blockquote>
+<p>在交换机进行相应的配置，使 PC 或者路由器接入立即能进入转发状态， 并且配置相应的保护功能，收到 BPDU 接口会被关闭。</p>
+<p>上行接口或接入或者汇聚的终端接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cobol">interface GigabitEthernet0/0/2<br> stp edged-port enable<br></code></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">interface GigabitEthernet0&#x2F;0&#x2F;2</td>
+<td align="left">进入 GigabitEthernet0&#x2F;0&#x2F;2接口配置模式</td>
+</tr>
+<tr>
+<td align="left">stp edged-port enable</td>
+<td align="left">启用接口的边缘端口（Edge Port）功能，表示该接口连接的是一个非 STP 设备，可以避免该接口的状态从 Listening 状态切换到 Learning 状态</td>
+</tr>
+</tbody></table>
+<h4 id="VRRP"><a href="#VRRP" class="headerlink" title="VRRP"></a>VRRP</h4><p>SW1 和 SW2 分别存在 Vlanif10 20 30 50 60 ，分别作为各部门的网关， 要求使用 VRRP 技术实现网关的冗余备份。 </p>
+<p>SW1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cobol">interface Vlanif10<br> vrrp vrid 10 virtual-ip 192.168.10.254<br> vrrp vrid 10 priority 200<br>interface Vlanif20<br> vrrp vrid 20 virtual-ip 192.168.20.254<br> vrrp vrid 20 priority 200<br>interface Vlanif30<br> vrrp vrid 30 virtual-ip 192.168.30.254<br> vrrp vrid 30 priority 200<br>interface Vlanif50<br> vrrp vrid 50 virtual-ip 192.168.50.254<br>interface Vlanif60<br> vrrp vrid 60 virtual-ip 192.168.60.254<br></code></pre></td></tr></table></figure>
+
+<p>SW2</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">interface</span> Vlanif10<br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">10</span> virtual-ip <span class="hljs-number">192.168.10.254</span><br><span class="hljs-attribute">interface</span> Vlanif20<br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">20</span> virtual-ip <span class="hljs-number">192.168.20.254</span><br><span class="hljs-attribute">interface</span> Vlanif30<br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">30</span> virtual-ip <span class="hljs-number">192.168.30.254</span><br><span class="hljs-attribute">interface</span> Vlanif50<br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">50</span> virtual-ip <span class="hljs-number">192.168.50.254</span><br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">10</span> priority <span class="hljs-number">200</span><br><span class="hljs-attribute">interface</span> Vlanif60<br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">60</span> virtual-ip <span class="hljs-number">192.168.60.254</span><br> <span class="hljs-attribute">vrrp</span> vrid <span class="hljs-number">10</span> priority <span class="hljs-number">200</span><br></code></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">interface Vlanif10</td>
+<td align="left">进入 VLAN 10 虚拟接口的配置模式</td>
+</tr>
+<tr>
+<td align="left">vrrp vrid 10 virtual-ip 192.168.10.254</td>
+<td align="left">配置 VLAN 10 的虚拟路由器 ID 为10,id范围:1-255，虚拟 IP 地址为 192.168.10.254</td>
+</tr>
+<tr>
+<td align="left">vrrp vrid 10 priority 200</td>
+<td align="left">配置 VLAN 10 的虚拟路由器优先级为 200，默认100，越高越优先，优先范围：1-254</td>
+</tr>
+</tbody></table>
+<p>在 Vlanif10 20 30 50 60的master路由器分别使用 BFD 技术跟踪上行接口， 当上行链路断开时，能自动切换到备份路由器。</p>
+<p>SW1：上行接口<code>GigabitEthernet0/0/2</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cobol">interface Vlanif10<br> vrrp vrid 10 track interface GigabitEthernet0/0/2 reduced 110<br>interface Vlanif20<br> vrrp vrid 20 track interface GigabitEthernet0/0/2 reduced 110<br>interface Vlanif30<br> vrrp vrid 30 track interface GigabitEthernet0/0/2 reduced 110<br></code></pre></td></tr></table></figure>
+
+<p> SW2：上行接口<code>GigabitEthernet0/0/2</code></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Vlanif50</span><br> <span class="hljs-symbol">vrrp</span> <span class="hljs-symbol">vrid</span> <span class="hljs-symbol">50</span> <span class="hljs-symbol">track</span> <span class="hljs-symbol">interface</span> <span class="hljs-symbol">GigabitEthernet0</span>/<span class="hljs-symbol">0</span>/<span class="hljs-symbol">2</span> <span class="hljs-symbol">reduced</span> <span class="hljs-symbol">110</span><br><span class="hljs-symbol">interface</span> <span class="hljs-symbol">Vlanif60</span><br> <span class="hljs-symbol">vrrp</span> <span class="hljs-symbol">vrid</span> <span class="hljs-symbol">60</span> <span class="hljs-symbol">track</span> <span class="hljs-symbol">interface</span> <span class="hljs-symbol">GigabitEthernet0</span>/<span class="hljs-symbol">0</span>/<span class="hljs-symbol">2</span> <span class="hljs-symbol">reduced</span> <span class="hljs-symbol">110</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">interface Vlanif10</td>
+<td align="left">进入 VLAN 10 虚拟接口的配置模式</td>
+</tr>
+<tr>
+<td align="left">vrrp vrid 10 track interface GigabitEthernet0&#x2F;0&#x2F;2 reduced 110</td>
+<td align="left">配置 VLAN 10 的虚拟路由器跟踪接口 GigabitEthernet0&#x2F;0&#x2F;2 的状态，当该接口down掉后，优先级减少110，将SW1 的虚拟路由器优先级从200减少为90，而SW2默认优先级为100，SW2优先级比SW1高，此时，SW2会抢占成为master。</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="category-chain-item">交换路由</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/%E5%8D%8E%E4%B8%BA/" class="category-chain-item">华为</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="print-no-link">#交换路由</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华为VRRP+MSTP组网实验</div>
+      <div>https://kuan.pages.dev/article/738766b7.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>IKun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/article/b1d379e5.html" title="Docker安装宝塔面板开心版">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker安装宝塔面板开心版</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/article/10030833.html" title="Docker安装WireGuard">
+                        <span class="hidden-mobile">Docker安装WireGuard</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
