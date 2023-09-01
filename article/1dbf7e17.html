@@ -16,24 +16,24 @@
   <meta name="author" content="IKun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chevereto是一个自建图片托管网站，目前已更新到V4，但也开始收费，但可以选择使用另一个分支：Cheverote-Free，是基于Cheverote V3.16.2版本，目前已停止维护，只提供基本的功能，供个人或小型社区免费试用。">
+    <meta name="description" content="流分类各规则之间属于并列关系，只要匹配规则不冲突，都可以在同一流分类中配置。若匹配规则冲突，在流策略中绑定流行为和该流分类时系统会提示错误，应用流策略将不能生效。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chevereto1.6.2切换语言">
-<meta property="og:url" content="https://kuan.pages.dev/article/f1692013.html">
+<meta property="og:title" content="流分类">
+<meta property="og:url" content="https://kuan.pages.dev/article/1dbf7e17.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="Chevereto是一个自建图片托管网站，目前已更新到V4，但也开始收费，但可以选择使用另一个分支：Cheverote-Free，是基于Cheverote V3.16.2版本，目前已停止维护，只提供基本的功能，供个人或小型社区免费试用。">
+<meta property="og:description" content="流分类各规则之间属于并列关系，只要匹配规则不冲突，都可以在同一流分类中配置。若匹配规则冲突，在流策略中绑定流行为和该流分类时系统会提示错误，应用流策略将不能生效。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kuan.pages.dev/img/banner/Chevereto.jpg">
-<meta property="article:published_time" content="2023-01-25T02:21:01.000Z">
-<meta property="article:modified_time" content="2023-08-30T02:41:58.941Z">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/HuaWei-Routers.png">
+<meta property="article:published_time" content="2023-09-01T08:30:00.000Z">
+<meta property="article:modified_time" content="2023-09-01T14:19:00.323Z">
 <meta property="article:author" content="IKun">
-<meta property="article:tag" content="图床">
+<meta property="article:tag" content="交换路由">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/Chevereto.jpg">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/HuaWei-Routers.png">
   
   
   
-  <title>Chevereto1.6.2切换语言 - 菜鸟驿站</title>
+  <title>流分类 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Chevereto1.6.2切换语言"></span>
+            <span id="subtitle" data-typed-text="流分类"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 10:21" pubdate>
-          2023年1月25日 上午
+        <time datetime="2023-09-01 16:30" pubdate>
+          2023年9月1日 下午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          54 字
+          805 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -270,12 +270,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Chevereto1.6.2切换语言</h1>
+            <h1 id="seo-header">流分类</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Chevereto1-6-2切换语言"><a href="#Chevereto1-6-2切换语言" class="headerlink" title="Chevereto1.6.2切换语言"></a>Chevereto1.6.2切换语言</h1><p>将项目地址内容覆盖到<code>Chevereto</code>目录下即可，地址<a target="_blank" rel="noopener" href="https://github.com/keven1024/chevereto-free-multi-language">chevereto</a></p>
+                <ol>
+<li><p>配置流分类</p>
+<p>在<code>Switch</code>上创建名称为<code>c_fk</code>,<code>c_yg</code>流分类，并分别配置匹配规则3000、3001。<br>员工<code>yg</code>、访客<code>fk</code></p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs smali">[Switch] traffic classifier c_fk<br>[Switch-classifier-c_fk]<span class="hljs-built_in"> if-match </span>acl 3000<br>[Switch-classifier-c_fk] quit<br>[Switch] traffic classifier c_yg<br>[Switch-classifier-c_yg]<span class="hljs-built_in"> if-match </span>acl 3001<br>[Switch-classifier-c_yg] quit<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置流行为</p>
+<p>在Switch上创建流行为<code>b1</code>，并配置允许动作。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">[<span class="hljs-keyword">Switch] </span>traffic <span class="hljs-keyword">behavior </span><span class="hljs-keyword">b1</span><br><span class="hljs-keyword"></span>[<span class="hljs-keyword">Switch-behavior-b1] </span>permit<br>[<span class="hljs-keyword">Switch-behavior-b1] </span>quit<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置流策略，关联流分类和流行为。</p>
+<p>在Switch上创建流策略<code>p_fk</code>,<code>P_FK</code>，并分别将流分类<code>c_yg</code>,<code>c_fk</code>与流行为b1关联。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">[<span class="hljs-keyword">Switch] </span>traffic policy p_fk<br>[<span class="hljs-keyword">Switch-trafficpolicy-p_fk] </span>classifier c_fk <span class="hljs-keyword">behavior </span><span class="hljs-keyword">b1</span><br><span class="hljs-keyword"></span>[<span class="hljs-keyword">Switch-trafficpolicy-p_fk] </span>quit<br>[<span class="hljs-keyword">Switch] </span>traffic policy p_yg<br>[<span class="hljs-keyword">Switch-trafficpolicy-p_yg] </span>classifier c_yg <span class="hljs-keyword">behavior </span><span class="hljs-keyword">b1</span><br><span class="hljs-keyword"></span>[<span class="hljs-keyword">Switch-trafficpolicy-p_yg] </span>quit<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>应用流策略</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-string">[Switch]</span> vlan <span class="hljs-number">10</span><br><span class="hljs-string">   [Switch-vlan10]</span> traffic-policy p_fk inbound<br><span class="hljs-string">   [Switch-vlan10]</span> quit<br><span class="hljs-string">   [Switch]</span> vlan <span class="hljs-number">20</span><br><span class="hljs-string">   [Switch-vlan20]</span> traffic-policy p_yg inbound<br><span class="hljs-string">   [Switch-vlan20]</span> quit<br></code></pre></td></tr></table></figure></li>
+</ol>
 
                 
               </div>
@@ -294,12 +309,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  <a href="/categories/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="category-chain-item">交换路由</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BA%94%E7%94%A8/" class="category-chain-item">应用</a>
+  <a href="/categories/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/%E5%8D%8E%E4%B8%BA/" class="category-chain-item">华为</a>
   
   
 
@@ -316,7 +331,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9B%BE%E5%BA%8A/" class="print-no-link">#图床</a>
+        <a href="/tags/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="print-no-link">#交换路由</a>
       
     </div>
   
@@ -328,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Chevereto1.6.2切换语言</div>
-      <div>https://kuan.pages.dev/article/f1692013.html</div>
+      <div>流分类</div>
+      <div>https://kuan.pages.dev/article/1dbf7e17.html</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月25日</div>
+          <div>2023年9月1日</div>
         </div>
       
       
@@ -373,18 +388,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/article/5d938d1d.html" title="Chevereto安装">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Chevereto安装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/article/b82be445.html" title="Typecho配置Rewrite规则">
-                        <span class="hidden-mobile">Typecho配置Rewrite规则</span>
+                      <a href="/article/5c95213d.html" title="端口镜像">
+                        <span class="hidden-mobile">端口镜像</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

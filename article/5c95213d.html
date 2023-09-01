@@ -16,24 +16,24 @@
   <meta name="author" content="IKun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chevereto是一个自建图片托管网站，目前已更新到V4，但也开始收费，但可以选择使用另一个分支：Cheverote-Free，是基于Cheverote V3.16.2版本，目前已停止维护，只提供基本的功能，供个人或小型社区免费试用。">
+    <meta name="description" content="端口镜像（port Mirroring）功能通过在交换机或路由器上，将一个或多个源端口的数据流量转发到某一个指定端口来实现对网络的监听，指定端口称之为“镜像端口”或“目的端口”，在不严重影响源端口正常吞吐流量的情况下，可以通过镜像端口对网络的流量进行监控分析。在企业中用镜像功能，可以很好地对企业内部的网络数据进行监控管理，在网络出故障的时候，可以快速地定位故障。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chevereto1.6.2切换语言">
-<meta property="og:url" content="https://kuan.pages.dev/article/f1692013.html">
+<meta property="og:title" content="端口镜像">
+<meta property="og:url" content="https://kuan.pages.dev/article/5c95213d.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="Chevereto是一个自建图片托管网站，目前已更新到V4，但也开始收费，但可以选择使用另一个分支：Cheverote-Free，是基于Cheverote V3.16.2版本，目前已停止维护，只提供基本的功能，供个人或小型社区免费试用。">
+<meta property="og:description" content="端口镜像（port Mirroring）功能通过在交换机或路由器上，将一个或多个源端口的数据流量转发到某一个指定端口来实现对网络的监听，指定端口称之为“镜像端口”或“目的端口”，在不严重影响源端口正常吞吐流量的情况下，可以通过镜像端口对网络的流量进行监控分析。在企业中用镜像功能，可以很好地对企业内部的网络数据进行监控管理，在网络出故障的时候，可以快速地定位故障。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kuan.pages.dev/img/banner/Chevereto.jpg">
-<meta property="article:published_time" content="2023-01-25T02:21:01.000Z">
-<meta property="article:modified_time" content="2023-08-30T02:41:58.941Z">
+<meta property="og:image" content="https://kuan.pages.dev/img/banner/HuaWei-Routers.png">
+<meta property="article:published_time" content="2023-09-01T08:30:00.000Z">
+<meta property="article:modified_time" content="2023-09-01T14:19:00.318Z">
 <meta property="article:author" content="IKun">
-<meta property="article:tag" content="图床">
+<meta property="article:tag" content="交换路由">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/Chevereto.jpg">
+<meta name="twitter:image" content="https://kuan.pages.dev/img/banner/HuaWei-Routers.png">
   
   
   
-  <title>Chevereto1.6.2切换语言 - 菜鸟驿站</title>
+  <title>端口镜像 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Chevereto1.6.2切换语言"></span>
+            <span id="subtitle" data-typed-text="端口镜像"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 10:21" pubdate>
-          2023年1月25日 上午
+        <time datetime="2023-09-01 16:30" pubdate>
+          2023年9月1日 下午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          54 字
+          215 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -270,12 +270,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Chevereto1.6.2切换语言</h1>
+            <h1 id="seo-header">端口镜像</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Chevereto1-6-2切换语言"><a href="#Chevereto1-6-2切换语言" class="headerlink" title="Chevereto1.6.2切换语言"></a>Chevereto1.6.2切换语言</h1><p>将项目地址内容覆盖到<code>Chevereto</code>目录下即可，地址<a target="_blank" rel="noopener" href="https://github.com/keven1024/chevereto-free-multi-language">chevereto</a></p>
+                <p><code>G0/0/1</code>为观察端口、<code>G0/0/2</code>为镜像端口</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">observe-port <span class="hljs-number">1</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">GigabitEthernet0</span>/<span class="hljs-symbol">0</span>/<span class="hljs-symbol">1</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">interface GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">2</span><br> port-mirroring to observe-port <span class="hljs-number">1</span> inbound   <span class="hljs-regexp">//</span>把镜像端口进方向的流量复制一份给观察端口<br> port-mirroring to observe-port <span class="hljs-number">1</span> outbound  <span class="hljs-regexp">//</span>把镜像端口出方向的流量复制一份给观察端口<br></code></pre></td></tr></table></figure>
+
+
+
 
                 
               </div>
@@ -294,12 +300,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  <a href="/categories/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="category-chain-item">交换路由</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BA%94%E7%94%A8/" class="category-chain-item">应用</a>
+  <a href="/categories/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/%E5%8D%8E%E4%B8%BA/" class="category-chain-item">华为</a>
   
   
 
@@ -316,7 +322,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9B%BE%E5%BA%8A/" class="print-no-link">#图床</a>
+        <a href="/tags/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="print-no-link">#交换路由</a>
       
     </div>
   
@@ -328,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Chevereto1.6.2切换语言</div>
-      <div>https://kuan.pages.dev/article/f1692013.html</div>
+      <div>端口镜像</div>
+      <div>https://kuan.pages.dev/article/5c95213d.html</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +347,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月25日</div>
+          <div>2023年9月1日</div>
         </div>
       
       
@@ -373,9 +379,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/article/5d938d1d.html" title="Chevereto安装">
+                      <a href="/article/1dbf7e17.html" title="流分类">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Chevereto安装</span>
+                        <span class="hidden-mobile">流分类</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -383,8 +389,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/article/b82be445.html" title="Typecho配置Rewrite规则">
-                        <span class="hidden-mobile">Typecho配置Rewrite规则</span>
+                      <a href="/article/d0b8042a.html" title="网盘数据分享">
+                        <span class="hidden-mobile">网盘数据分享</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
