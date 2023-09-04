@@ -16,25 +16,25 @@
   <meta name="author" content="IKun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一.AP上线设置1.创建域模板123wlanregulatory-domain-profile name 名字country-code CN  2.创建AP组123wlanap-group name 组名regulatory-domain-profile 域名  3.配置AC源接口在系统视图下 1capwap source interface VlanifID  4.AC添加AP有三种ap认证方式">
+    <meta name="description" content="WLAN即Wireless LAN（无线局域网），是指通过无线技术构建的无线局域网络。WLAN广义上是指以无线电波、激光、红外线等无线信号来代替有线局域网中的部分或全部传输介质所构成的网络。通过WLAN技术，用户可以方便地接入到无线网络，并在无线网络覆盖区域内自由移动，彻底摆脱有线网络的束缚。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="华为AC+AP基础配置">
+<meta property="og:title" content="华为AC+AP配置调优">
 <meta property="og:url" content="https://kuan.pages.dev/article/ac2c0052.html">
 <meta property="og:site_name" content="菜鸟驿站">
-<meta property="og:description" content="一.AP上线设置1.创建域模板123wlanregulatory-domain-profile name 名字country-code CN  2.创建AP组123wlanap-group name 组名regulatory-domain-profile 域名  3.配置AC源接口在系统视图下 1capwap source interface VlanifID  4.AC添加AP有三种ap认证方式">
+<meta property="og:description" content="WLAN即Wireless LAN（无线局域网），是指通过无线技术构建的无线局域网络。WLAN广义上是指以无线电波、激光、红外线等无线信号来代替有线局域网中的部分或全部传输介质所构成的网络。通过WLAN技术，用户可以方便地接入到无线网络，并在无线网络覆盖区域内自由移动，彻底摆脱有线网络的束缚。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kuan.pages.dev/img/banner/HuaWei-AC.png">
 <meta property="article:published_time" content="2022-07-10T14:30:00.000Z">
-<meta property="article:modified_time" content="2023-08-30T02:41:58.972Z">
+<meta property="article:modified_time" content="2023-09-04T13:17:45.790Z">
 <meta property="article:author" content="IKun">
-<meta property="article:tag" content="华为">
+<meta property="article:tag" content="交换路由">
 <meta property="article:tag" content="AC+AP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://kuan.pages.dev/img/banner/HuaWei-AC.png">
   
   
   
-  <title>华为AC+AP基础配置 - 菜鸟驿站</title>
+  <title>华为AC+AP配置调优 - 菜鸟驿站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +194,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/example1.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg/wzbj.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="华为AC+AP基础配置"></span>
+            <span id="subtitle" data-typed-text="华为AC+AP配置调优"></span>
           
         </div>
 
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          4.1k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          14 分钟
+          35 分钟
         
       </span>
     
@@ -271,54 +271,121 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">华为AC+AP基础配置</h1>
+            <h1 id="seo-header">华为AC+AP配置调优</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="一-AP上线设置"><a href="#一-AP上线设置" class="headerlink" title="一.AP上线设置"></a>一.AP上线设置</h3><h4 id="1-创建域模板"><a href="#1-创建域模板" class="headerlink" title="1.创建域模板"></a>1.创建域模板</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">wlan</span><br><span class="hljs-symbol">regulatory</span>-domain-profile name 名字<br><span class="hljs-symbol">country</span>-<span class="hljs-meta">code</span> <span class="hljs-meta">CN</span><br></code></pre></td></tr></table></figure>
+                <h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="AP上线"><a href="#AP上线" class="headerlink" title="AP上线"></a>AP上线</h3><h4 id="配置源接口"><a href="#配置源接口" class="headerlink" title="配置源接口"></a>配置源接口</h4><p>在系统视图下</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">capwap source <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Vlanif</span> <span class="hljs-symbol">ID</span><br></code></pre></td></tr></table></figure>
 
-<h4 id="2-创建AP组"><a href="#2-创建AP组" class="headerlink" title="2.创建AP组"></a>2.创建AP组</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">wlan<br>ap-<span class="hljs-keyword">group</span> <span class="hljs-title">name</span> 组名<br>regulatory-domain-profile 域名<br></code></pre></td></tr></table></figure>
+<h4 id="创建域模板"><a href="#创建域模板" class="headerlink" title="创建域模板"></a>创建域模板</h4><p>设定频段和信道</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wlan</span><br>	<span class="hljs-attribute">regulatory</span>-domain-profile name 名字<br>	<span class="hljs-attribute">country</span>-code CN<br>	<span class="hljs-attribute">dca</span>-channel <span class="hljs-number">5</span>g channel-set <span class="hljs-number">36</span>,<span class="hljs-number">40</span>,<span class="hljs-number">44</span>,<span class="hljs-number">48</span>,<span class="hljs-number">52</span>,<span class="hljs-number">56</span>,<span class="hljs-number">60</span>,<span class="hljs-number">64</span>,<span class="hljs-number">149</span>,<span class="hljs-number">153</span>,<span class="hljs-number">157</span>,<span class="hljs-number">161</span><br>  	<span class="hljs-attribute">dca</span>-channel <span class="hljs-number">5</span>g bandwidth <span class="hljs-number">80</span>mhz<br></code></pre></td></tr></table></figure>
 
-<h4 id="3-配置AC源接口"><a href="#3-配置AC源接口" class="headerlink" title="3.配置AC源接口"></a>3.配置AC源接口</h4><p>在系统视图下</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">capwap source <span class="hljs-keyword">interface</span> <span class="hljs-symbol">VlanifID</span><br></code></pre></td></tr></table></figure>
+<h4 id="创建AP组"><a href="#创建AP组" class="headerlink" title="创建AP组"></a>创建AP组</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">wlan<br>	ap-<span class="hljs-keyword">group</span> <span class="hljs-title">name</span> 组名<br>	regulatory-domain-profile 域名<br></code></pre></td></tr></table></figure>
 
-<h4 id="4-AC添加AP"><a href="#4-AC添加AP" class="headerlink" title="4.AC添加AP"></a>4.AC添加AP</h4><p>有三种ap认证方式：mac地址认证、sn序列号认证、不认证，这里我们采用MAC地址认证</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">wlan<br><span class="hljs-keyword">ap</span> auth-mode <span class="hljs-keyword">mac</span>-auth	 <span class="hljs-comment">//设置认证模式</span><br><span class="hljs-keyword">ap</span>-id 0 <span class="hljs-keyword">ap</span>-<span class="hljs-keyword">mac</span> <span class="hljs-keyword">mac</span>地址   <span class="hljs-comment">//0为AP的ID编号，可依次排序</span><br><span class="hljs-keyword">ap</span>-name <span class="hljs-keyword">AP</span>				<span class="hljs-comment">//设置AP名字</span><br><span class="hljs-keyword">ap</span>-group apgroup		<span class="hljs-comment">//设置AP所属组</span><br></code></pre></td></tr></table></figure>
-
-
-
+<h4 id="添加AP"><a href="#添加AP" class="headerlink" title="添加AP"></a>添加AP</h4><p>有三种ap认证方式：mac地址认证、sn序列号认证、不认证，采用MAC地址认证。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">wlan<br>    <span class="hljs-keyword">ap</span> auth-mode <span class="hljs-keyword">mac</span>-auth<br>    <span class="hljs-keyword">ap</span>-id 0 <span class="hljs-keyword">ap</span>-<span class="hljs-keyword">mac</span> <span class="hljs-keyword">mac</span>地址<br>    <span class="hljs-keyword">ap</span>-name <span class="hljs-keyword">AP</span><br>    <span class="hljs-keyword">ap</span>-group 组名<br></code></pre></td></tr></table></figure>
 
 
 
 
-<h3 id="二-射频业务配置"><a href="#二-射频业务配置" class="headerlink" title="二.射频业务配置"></a>二.射频业务配置</h3><h4 id="1-配置安全模板"><a href="#1-配置安全模板" class="headerlink" title="1.配置安全模板"></a>1.配置安全模板</h4><p>加密WIFI</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">wlan<br><span class="hljs-keyword">security</span>-profile <span class="hljs-type">name</span> 模板名<br><span class="hljs-keyword">security</span> wpa-wpa2 psk pass-phrase 密码 aes //设置无线接入密码<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="射频业务"><a href="#射频业务" class="headerlink" title="射频业务"></a>射频业务</h3><p>在<code>wlan</code>视图下</p>
+<h4 id="安全模板"><a href="#安全模板" class="headerlink" title="安全模板"></a>安全模板</h4><p>加密WIFI</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">security</span>-profile <span class="hljs-type">name</span> Wlan<br>	<span class="hljs-keyword">security</span> wpa-wpa2 psk pass-phrase 密码 aes<br></code></pre></td></tr></table></figure>
 
 <p>开放WIFI</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">wlan<br><span class="hljs-keyword">security</span>-profile <span class="hljs-type">name</span> 模板名<br><span class="hljs-keyword">security</span> <span class="hljs-keyword">open</span> //Guest用户不设密码<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">security</span>-profile <span class="hljs-type">name</span> Wlan-<span class="hljs-keyword">open</span><br>	<span class="hljs-keyword">security</span> <span class="hljs-keyword">open</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="SSID模板"><a href="#SSID模板" class="headerlink" title="SSID模板"></a>SSID模板</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ssid</span>-profile name Wlan-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G<br>	<span class="hljs-attribute">ssid</span> Wlan-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ssid</span>-profile name Wlan-<span class="hljs-number">5</span>G<br>	<span class="hljs-attribute">ssid</span> Wlan-<span class="hljs-number">5</span>G<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">ssid-profile <span class="hljs-type">name</span> Wlan-<span class="hljs-keyword">open</span><br>	ssid Wlan-<span class="hljs-keyword">open</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="VAP引用"><a href="#VAP引用" class="headerlink" title="VAP引用"></a>VAP引用</h4><p>AC控制器上的转发模式有直接转发（本地转发）、隧道转到（集中转发），这里我们采用本地转发，就是流量不经过AC控制器直接转发出去</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wlan</span><br><span class="hljs-attribute">vap</span>-profile name office-<span class="hljs-number">2</span>.<span class="hljs-number">4</span><br><span class="hljs-attribute">forward</span>-mode direct-forward 	//直接转发模式<br><span class="hljs-attribute">service</span>-vlan vlan-id ID<br><span class="hljs-attribute">security</span>-profile Wlan<br><span class="hljs-attribute">ssid</span>-profile Wlan-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs delphi">wlan<br>vap-profile <span class="hljs-keyword">name</span> office-<span class="hljs-number">5</span><br><span class="hljs-keyword">forward</span>-mode direct-<span class="hljs-keyword">forward</span> 	<span class="hljs-comment">//直接转发模式</span><br>service-vlan vlan-id ID<br>security-profile Wlan<br>ssid-profile Wlan-<span class="hljs-number">5</span>G<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim">wlan<br>vap-<span class="hljs-keyword">profile</span> name Wlan-<span class="hljs-keyword">open</span><br>forward-<span class="hljs-keyword">mode</span> direct-forward 	//直接转发模式<br>service-vlan vlan-id ID<br>security-<span class="hljs-keyword">profile</span> Wlan-<span class="hljs-keyword">open</span><br>ssid-<span class="hljs-keyword">profile</span> Wlan-<span class="hljs-keyword">open</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="AP组引用vap模板"><a href="#AP组引用vap模板" class="headerlink" title="AP组引用vap模板"></a>AP组引用vap模板</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ap</span>-group name 组名<br><span class="hljs-attribute">vap</span>-profile Wlan-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G wlan <span class="hljs-number">1</span> radio <span class="hljs-number">0</span> //<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G射频信号引用Wlan-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G的vap模板<br><span class="hljs-attribute">vap</span>-profile Wlan-<span class="hljs-number">5</span>G wlan <span class="hljs-number">1</span> radio <span class="hljs-number">1</span> //<span class="hljs-number">5</span>G射频信号引用Wlan-<span class="hljs-number">5</span>G的vap模板<br><span class="hljs-attribute">vap</span>-profile Wlan-open wlan <span class="hljs-number">2</span> radio <span class="hljs-number">0</span><br><span class="hljs-attribute">vap</span>-profile Wlan-open wlan <span class="hljs-number">2</span> radio <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 
 
-<h4 id="2-配置SSID模板"><a href="#2-配置SSID模板" class="headerlink" title="2.配置SSID模板"></a>2.配置SSID模板</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wlan</span><br><span class="hljs-attribute">ssid</span>-profile name Wlan名字-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G<br><span class="hljs-attribute">ssid</span> Wlan名字 //修改默认的无线名称<br></code></pre></td></tr></table></figure>
 
 
-
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">wlan<br>ssid-profile name Wlan名字-<span class="hljs-number">5</span>G<br>ssid Wlan名字 <span class="hljs-regexp">//</span>修改默认的无线名称<br></code></pre></td></tr></table></figure>
-
-
-
-<h4 id="3-配置vap引用信息"><a href="#3-配置vap引用信息" class="headerlink" title="3.配置vap引用信息"></a>3.配置vap引用信息</h4><p>AC控制器上的转发模式有直接转发（本地转发）、隧道转到（集中转发），这里我们采用本地转发，就是流量不经过AC控制器直接转发出去</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">wlan<br>vap-profile name WLAN-<span class="hljs-number">2.4</span>G		<span class="hljs-regexp">//</span>名称<br>forward-mode direct-forward 	<span class="hljs-regexp">//</span>直接转发模式<br>service-vlan vlan-id ID			<span class="hljs-regexp">//</span>服务VLAN为ID<br>security-profile 安全模板名 		<span class="hljs-regexp">//</span>引用安全模板<br>ssid-profile Wlan名字 		  <span class="hljs-regexp">//</span>引用SSID模板<br></code></pre></td></tr></table></figure>
-
-
-
-<h4 id="4-ap组引用vap模板"><a href="#4-ap组引用vap模板" class="headerlink" title="4.ap组引用vap模板"></a>4.ap组引用vap模板</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wlan</span><br><span class="hljs-attribute">ap</span>-group name 组名<br><span class="hljs-attribute">vap</span>-profile Wlan名字-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G wlan <span class="hljs-number">1</span> radio <span class="hljs-number">0</span> //<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G射频信号引用Wlan名字-<span class="hljs-number">2</span>.<span class="hljs-number">4</span>G的vap模板<br><span class="hljs-attribute">vap</span>-profile Wlan名字-<span class="hljs-number">5</span>G wlan <span class="hljs-number">1</span> radio <span class="hljs-number">1</span> //<span class="hljs-number">5</span>G射频信号引用Wlan名字-<span class="hljs-number">5</span>G的vap模板<br><span class="hljs-attribute">vap</span>-profile WLAN-Guest wlan <span class="hljs-number">2</span> radio <span class="hljs-number">0</span><br><span class="hljs-attribute">vap</span>-profile WLAN-Guest wlan <span class="hljs-number">2</span> radio <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>华为AC简单配置无线</li>
+<h2 id="射频调优"><a href="#射频调优" class="headerlink" title="射频调优"></a>射频调优</h2><h4 id="频宽优化原则"><a href="#频宽优化原则" class="headerlink" title="频宽优化原则"></a>频宽优化原则</h4><ul>
+<li>2.4G射频由于可用信道比较少，频宽建议使用20MHz。</li>
+<li>5G射频频宽在高密场馆和室外覆盖场景下建议使用20MHz，室内覆盖场景下推荐使用40MHz，室内多隔断覆盖场景下推荐使用80MHz。</li>
 </ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">capwap</span> source interface vlan <span class="hljs-number">100</span><br><span class="hljs-attribute">wlan</span><br> <span class="hljs-attribute">regulatory</span>-domain-profile name default<br>  <span class="hljs-attribute">dca</span>-channel <span class="hljs-number">5</span>g channel-set <span class="hljs-number">36</span>,<span class="hljs-number">40</span>,<span class="hljs-number">44</span>,<span class="hljs-number">48</span>,<span class="hljs-number">52</span>,<span class="hljs-number">56</span>,<span class="hljs-number">60</span>,<span class="hljs-number">64</span>,<span class="hljs-number">149</span>,<span class="hljs-number">153</span>,<span class="hljs-number">157</span>,<span class="hljs-number">161</span><br>  <span class="hljs-attribute">dca</span>-channel <span class="hljs-number">5</span>g bandwidth <span class="hljs-number">80</span>mhz<br> <span class="hljs-attribute">ap</span>-group name office<br> <span class="hljs-attribute">ap</span>-id <span class="hljs-number">1</span> ap-mac <span class="hljs-number">00</span>e0-fcea-<span class="hljs-number">1640</span><br>  <span class="hljs-attribute">ap</span>-name office<br>  <span class="hljs-attribute">ap</span>-group office<br> <span class="hljs-attribute">ssid</span>-profile name office<br>  <span class="hljs-attribute">ssid</span> office<br> <span class="hljs-attribute">security</span>-profile name office<br>  <span class="hljs-attribute">security</span> wpa-wpa2 psk pass-phrase password aes-tkip<br> <span class="hljs-attribute">vap</span>-profile name office<br>  <span class="hljs-attribute">service</span>-vlan vlan-id id<br>  <span class="hljs-attribute">ssid</span>-profile office<br>  <span class="hljs-attribute">security</span>-profile office<br> <span class="hljs-attribute">ap</span>-group name office<br>  <span class="hljs-attribute">vap</span>-profile office wlan <span class="hljs-number">1</span> radio <span class="hljs-literal">all</span><br></code></pre></td></tr></table></figure>
+<h4 id="射频自动调优"><a href="#射频自动调优" class="headerlink" title="射频自动调优"></a>射频自动调优</h4><p>WLAN视图</p>
+<p>下开启定时调优功能</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">calibrate</span> enable schedule time <span class="hljs-number">03</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure>
+
+<p>在域管理模板下配置调优信道和调优带宽</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs delphi">regulatory-domain-profile <span class="hljs-keyword">name</span> <span class="hljs-keyword">default</span><br>	dca-channel <span class="hljs-number">2.4</span>g channel-<span class="hljs-keyword">set</span> <span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">13</span>  <br>	<span class="hljs-comment">//配置2.4G射频的调优信道</span><br>	dca-channel <span class="hljs-number">5</span>g channel-<span class="hljs-keyword">set</span> <span class="hljs-number">36</span>,<span class="hljs-number">40</span>,<span class="hljs-number">44</span>,<span class="hljs-number">48</span>,<span class="hljs-number">52</span>,<span class="hljs-number">56</span>,<span class="hljs-number">60</span>,<span class="hljs-number">64</span>,<span class="hljs-number">149</span>,<span class="hljs-number">153</span>,<span class="hljs-number">157</span>,<span class="hljs-number">161</span>,<span class="hljs-number">165</span>  <br>	<span class="hljs-comment">//配置5G射频的调优信道</span><br>	dca-channel <span class="hljs-number">5</span>g bandwidth <span class="hljs-number">80</span>mhz  <br>	<span class="hljs-comment">//配置5G射频的调优带宽</span><br></code></pre></td></tr></table></figure>
+
+<p>在RRM模板下配置最大和最小调优功率</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs gml">rrm-profile name <span class="hljs-keyword">default</span><br>	calibrate <span class="hljs-built_in">max</span>-tx-<span class="hljs-built_in">power</span> <span class="hljs-number">15</span>  <br>	<span class="hljs-comment">//配置2.4G射频的最大调优功率</span><br>	calibrate <span class="hljs-built_in">min</span>-tx-<span class="hljs-built_in">power</span> <span class="hljs-number">5</span>  <br>	<span class="hljs-comment">//配置2.4G射频的最小调优功率</span><br>	calibrate <span class="hljs-built_in">max</span>-tx-<span class="hljs-built_in">power</span> radio<span class="hljs-number">-5</span>g <span class="hljs-number">20</span>  <br>	<span class="hljs-comment">//配置5G射频的最大调优功率</span><br>	calibrate <span class="hljs-built_in">min</span>-tx-<span class="hljs-built_in">power</span> radio<span class="hljs-number">-5</span>g <span class="hljs-number">10</span>  <br>	<span class="hljs-comment">//配置5G射频的最小调优功率</span><br><br></code></pre></td></tr></table></figure>
+
+<p>手动触发射频调优。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">calibrate manual startup</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="射频手动调优"><a href="#射频手动调优" class="headerlink" title="射频手动调优"></a>射频手动调优</h4><p>查看AP当前的信道和发射功率</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">display</span> radio <span class="hljs-keyword">ap</span>-id 0<br></code></pre></td></tr></table></figure>
+
+<p>手动指定AP射频的信道和带宽，<code>WLAN视图</code>。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk">ap-id <span class="hljs-number">0</span><br>	radio <span class="hljs-number">0</span><br>		calibrate auto-channel-select disable  <br>		<span class="hljs-regexp">//</span>关闭信道自动调优功能<br>		channel <span class="hljs-number">20</span>mhz <span class="hljs-number">6</span>  <br>		<span class="hljs-regexp">//</span>指定射频的带宽为<span class="hljs-number">20</span>MHz，信道为<span class="hljs-number">6</span><br>	radio <span class="hljs-number">1</span><br>		calibrate auto-channel-select disable  <br>		<span class="hljs-regexp">//</span>关闭信道自动调优功能<br>		channel <span class="hljs-number">20</span>mhz <span class="hljs-number">149</span>  <br>		<span class="hljs-regexp">//</span>指定射频的带宽为<span class="hljs-number">20</span>MHz，信道为<span class="hljs-number">149</span><br><br></code></pre></td></tr></table></figure>
+
+<p>手动指定AP射频的发射功率</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk">ap-id <span class="hljs-number">0</span><br>	radio <span class="hljs-number">0</span><br>		calibrate auto-txpower-select disable  <br>		<span class="hljs-regexp">//</span>关闭功率自动调优功能<br>		eirp <span class="hljs-number">20</span>  <br>		<span class="hljs-regexp">//</span>指定射频的发射功率为<span class="hljs-number">20</span>dBm<br>	radio <span class="hljs-number">1</span><br>		calibrate auto-txpower-select disable  <br>		<span class="hljs-regexp">//</span>关闭功率自动调优功能<br>		eirp <span class="hljs-number">20</span>  <br>		<span class="hljs-regexp">//</span>指定射频的发射功率为<span class="hljs-number">20</span>dBm<br></code></pre></td></tr></table></figure>
+
+<h2 id="VAP管理"><a href="#VAP管理" class="headerlink" title="VAP管理"></a>VAP管理</h2><h4 id="降低Probe-Response报文重传次数"><a href="#降低Probe-Response报文重传次数" class="headerlink" title="降低Probe Response报文重传次数"></a>降低Probe Response报文重传次数</h4><p><strong>优化说明</strong></p>
+<p>Probe Response报文是Wi-Fi通信中最常见的报文，无线设备基本都会周期性发送Probe Request广播请求扫描无线信号，周围AP收到后以Probe Response报文进行单播响应。如果报文发送重传，则带来很大的空口资源浪费。降低AP Probe Response报文重传次数或禁止Probe Response报文重传，能有效改善网络环境。</p>
+<p>由于无线终端在每个周期会发多次Probe Request，所以即使这次响应报文丢包，也不会造成负面影响。</p>
+<p>缺省情况下，Probe Response报文的重传次数为1。</p>
+<p><strong>优化方法</strong></p>
+<p>在SSID模板下配置probe-response重传次数</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">[<span class="hljs-keyword">AC</span>-wlan-<span class="hljs-keyword">view</span>] ssid-profile name <span class="hljs-keyword">test</span><br>[<span class="hljs-keyword">AC</span>-wlan-ssid-prof-<span class="hljs-keyword">test</span>] probe-response-retry 1<br></code></pre></td></tr></table></figure>
+
+<h4 id="开启AP不响应广播Probe-Request帧的功能"><a href="#开启AP不响应广播Probe-Request帧的功能" class="headerlink" title="开启AP不响应广播Probe Request帧的功能"></a>开启AP不响应广播Probe Request帧的功能</h4><p><strong>优化说明</strong></p>
+<p>Probe Response报文是Wi-Fi通信中最常见的报文，无线设备基本都会周期性发送Probe Request广播请求扫描无线信号，周围AP收到后以Probe Response报文进行单播响应，在室外高密场景中，大量无线设备发送的Probe Response报文会过多的占用大量无线资源，导致信道利用率高，造成空口资源浪费。开启AP不响应广播Probe Request帧的功能可以减小Probe Response帧对无线资源的占用比例。</p>
+<p><strong>优化方法</strong></p>
+<p>在SSID模板下开启AP不响应广播Probe Request帧的功能。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">[<span class="hljs-keyword">AC</span>-wlan-<span class="hljs-keyword">view</span>] ssid-profile name <span class="hljs-keyword">test</span><br>[<span class="hljs-keyword">AC</span>-wlan-ssid-prof-<span class="hljs-keyword">test</span>] deny-broadcast-probe enable<br></code></pre></td></tr></table></figure>
+
+<h4 id="降低STA关联老化时间"><a href="#降低STA关联老化时间" class="headerlink" title="降低STA关联老化时间"></a>降低STA关联老化时间</h4><p><strong>优化方法</strong></p>
+<p>在SSID模板下配置STA老化时间</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">[<span class="hljs-keyword">AC</span>-wlan-<span class="hljs-keyword">view</span>] ssid-profile name <span class="hljs-keyword">test</span><br>[<span class="hljs-keyword">AC</span>-wlan-ssid-prof-<span class="hljs-keyword">test</span>] association-timeout 1<br></code></pre></td></tr></table></figure>
+
+<h2 id="智能漫游"><a href="#智能漫游" class="headerlink" title="智能漫游"></a>智能漫游</h2><h4 id="配置智能漫游"><a href="#配置智能漫游" class="headerlink" title="配置智能漫游"></a>配置智能漫游</h4><p><strong>优化方法</strong></p>
+<p>在RRM模板下配置智能漫游</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs smali">rrm-profile name wlan-rrm<br>	undo smart-roam disable   <br>	//开启智能漫游功能<br>	smart-roam roam-threshold<span class="hljs-built_in"> check-snr </span> <br>	//配置智能漫游的用户漫游触发方式<br>	smart-roam roam-threshold snr 20  <br>	//配置智能漫游基于信噪比的门限值<br></code></pre></td></tr></table></figure>
+
+<h4 id="强制低信号强度用户下线"><a href="#强制低信号强度用户下线" class="headerlink" title="强制低信号强度用户下线"></a>强制低信号强度用户下线</h4><p>缺省情况下，强制低信号强度用户下线功能开启，触发方式为基于信噪比的方式，基于信噪比的门限值为15dB。</p>
+<p><strong>优化方法</strong></p>
+<p>在RRM模板下配置强制低信号强度用户下线功。</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs smali">rrm-profile name default<br>    undo smart-roam quick-kickoff-threshold disable  <br>    //快速强制用户下线功能默认开启<br>    smart-roam quick-kickoff-threshold<span class="hljs-built_in"> check-snr </span> <br>    //配置基于终端信噪比的触发方式<br>    smart-roam quick-kickoff-threshold snr 15  <br>    //配置信噪比阈值<br>    sta-load-balance dynamic deauth-fail-times 0  <br>    //如果当前网络信号覆盖效果一般，存在漫游掉线的情况，建议降低智能漫游阈值或关闭deauth功能<br></code></pre></td></tr></table></figure>
+
+<h2 id="流量管理"><a href="#流量管理" class="headerlink" title="流量管理"></a>流量管理</h2><h4 id="配置用户限速"><a href="#配置用户限速" class="headerlink" title="配置用户限速"></a>配置用户限速</h4><p><strong>优化方法</strong></p>
+<p>在流量模板下配置用户限速，以<code>20Mbps</code>为例。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">traffic-profile <span class="hljs-type">name</span> <span class="hljs-keyword">default</span><br>    rate-<span class="hljs-keyword">limit</span> client down <span class="hljs-number">20480</span><br>    rate-<span class="hljs-keyword">limit</span> client up <span class="hljs-number">20480</span><br>    rate-<span class="hljs-keyword">limit</span> client dynamic <span class="hljs-keyword">disable</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="频谱导航"><a href="#频谱导航" class="headerlink" title="频谱导航"></a>频谱导航</h2><h4 id="配置频谱导航（5G优先）"><a href="#配置频谱导航（5G优先）" class="headerlink" title="配置频谱导航（5G优先）"></a>配置频谱导航（5G优先）</h4><p><strong>优化方法</strong></p>
+<p>在VAP模板下开启频谱导航功能</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gauss">vap-profile name wlan-net<br>	undo <span class="hljs-built_in">band</span>-steer <span class="hljs-keyword">disable</span> <br></code></pre></td></tr></table></figure>
+
+<p>在RRM模板下配置频谱导航起始和5G用户占比门限值。</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gauss">rrm-profile name wlan-rrm<br>    <span class="hljs-built_in">band</span>-steer <span class="hljs-built_in">balance</span> start-threshold <span class="hljs-number">100</span> <br>    <span class="hljs-built_in">band</span>-steer <span class="hljs-built_in">balance</span> gap-threshold <span class="hljs-number">90</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -362,7 +429,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8D%8E%E4%B8%BA/" class="print-no-link">#华为</a>
+        <a href="/tags/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1/" class="print-no-link">#交换路由</a>
       
         <a href="/tags/AC-AP/" class="print-no-link">#AC+AP</a>
       
@@ -376,7 +443,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>华为AC+AP基础配置</div>
+      <div>华为AC+AP配置调优</div>
       <div>https://kuan.pages.dev/article/ac2c0052.html</div>
     </div>
     <div class="license-meta">
