@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>华为交换机时间配置</title>
+    <title>华为交换路由DNS时间配置</title>
     <link href="/article/1f6a2055.html"/>
     <url>/article/1f6a2055.html</url>
     
-    <content type="html"><![CDATA[<h1 id="华为交换机时间配置"><a href="#华为交换机时间配置" class="headerlink" title="华为交换机时间配置"></a>华为交换机时间配置</h1><h4 id="手动配置"><a href="#手动配置" class="headerlink" title="手动配置"></a>手动配置</h4><p><strong>用户视图</strong></p><p>设置时区</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> timezone Beijing add <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure><p>设置时间，例如：2023年12月23日12:00:00</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> datetime <span class="hljs-number">12</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> <span class="hljs-number">2023</span>-<span class="hljs-number">12</span>-<span class="hljs-number">23</span><br></code></pre></td></tr></table></figure><p>显示当前时间</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">display</span> <span class="hljs-selector-tag">time</span> <span class="hljs-attribute">all</span><br></code></pre></td></tr></table></figure><h4 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h4><p><strong>系统视图</strong></p><p>开启<code>ntp</code>服务</p><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-keyword">undo</span> ntp-service server <span class="hljs-keyword">disable</span><br></code></pre></td></tr></table></figure><p>设置时区</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> timezone Beijing add <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure><p>设置同步地址</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ntp</span>-service unicast-server <span class="hljs-number">120.25.115.20</span><br></code></pre></td></tr></table></figure><h4 id="交换机作为服务器"><a href="#交换机作为服务器" class="headerlink" title="交换机作为服务器"></a>交换机作为服务器</h4><h5 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h5><p>使能NTP服务器功能</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">undo<span class="hljs-built_in"> ntp server </span><span class="hljs-built_in">disable</span> <br></code></pre></td></tr></table></figure><p>配置时间层数</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">ntp refclock-<span class="hljs-keyword">master</span> <span class="hljs-title">1</span>                                           <br></code></pre></td></tr></table></figure><p>开启认证(下列步骤可选)</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">[SwitchA] ntp authentication <span class="hljs-keyword">enable</span><br>[SwitchA] ntp authentication-keyid <span class="hljs-number">45</span> authentication-mode hmac-sha256 hello123456<br>//认证算法有MD5和HMAC-SHA256两种，HMAC-SHA256安全性高，MD5运行速度块。本举例使用HMAC-SHA256。<br>[SwitchA] ntp <span class="hljs-keyword">trusted</span> authentication-keyid <span class="hljs-number">45</span><br></code></pre></td></tr></table></figure><p>指定侦听接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ntp server source-<span class="hljs-keyword">interface</span> <span class="hljs-symbol">vlanif</span> <span class="hljs-symbol">ID</span><br></code></pre></td></tr></table></figure><h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><p>设置同步地址</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">undo<span class="hljs-built_in"> ntp server </span><span class="hljs-built_in">disable</span> <br></code></pre></td></tr></table></figure><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">ntp</span>-service unicast-server <span class="hljs-built_in">IP</span><br></code></pre></td></tr></table></figure><p>开启认证情况</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">[SwitchB] ntp authentication <span class="hljs-keyword">enable</span><br>[SwitchB] ntp authentication-keyid <span class="hljs-number">45</span> authentication-mode hmac-sha256 hello123456    <br>//认证算法有MD5和HMAC-SHA256两种，HMAC-SHA256安全性高，MD5运行速度块。本举例使用HMAC-SHA256。<br>[SwitchB] ntp <span class="hljs-keyword">trusted</span> authentication-keyid <span class="hljs-number">45</span><br>[SwitchB] ntp unicast-<span class="hljs-keyword">server</span> <span class="hljs-number">10.10</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span> authentication-keyid <span class="hljs-number">45</span>            <br>//配置时间同步的方式为单播客户端/服务器模式。<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="时间配置"><a href="#时间配置" class="headerlink" title="时间配置"></a>时间配置</h1><h4 id="手动配置"><a href="#手动配置" class="headerlink" title="手动配置"></a>手动配置</h4><p><strong>用户视图</strong></p><p>设置时区</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> timezone Beijing add <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure><p>设置时间，例如：2023年12月23日12:00:00</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> datetime <span class="hljs-number">12</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> <span class="hljs-number">2023</span>-<span class="hljs-number">12</span>-<span class="hljs-number">23</span><br></code></pre></td></tr></table></figure><p>显示当前时间</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">display</span> <span class="hljs-selector-tag">time</span> <span class="hljs-attribute">all</span><br></code></pre></td></tr></table></figure><h4 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h4><p><strong>系统视图</strong></p><p>开启<code>ntp</code>服务</p><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-keyword">undo</span> ntp-service server <span class="hljs-keyword">disable</span><br></code></pre></td></tr></table></figure><p>设置时区</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> timezone Beijing add <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure><p>设置同步地址</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ntp</span>-service unicast-server <span class="hljs-number">120.25.115.20</span><br></code></pre></td></tr></table></figure><h4 id="交换机作为服务器"><a href="#交换机作为服务器" class="headerlink" title="交换机作为服务器"></a>交换机作为服务器</h4><h5 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h5><p>使能NTP服务器功能</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">undo<span class="hljs-built_in"> ntp server </span><span class="hljs-built_in">disable</span> <br></code></pre></td></tr></table></figure><p>配置时间层数</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">ntp refclock-<span class="hljs-keyword">master</span> <span class="hljs-title">1</span>                                           <br></code></pre></td></tr></table></figure><p>开启认证(下列步骤可选)</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">[SwitchA] ntp authentication <span class="hljs-keyword">enable</span><br>[SwitchA] ntp authentication-keyid <span class="hljs-number">45</span> authentication-mode hmac-sha256 hello123456<br>//认证算法有MD5和HMAC-SHA256两种，HMAC-SHA256安全性高，MD5运行速度块。本举例使用HMAC-SHA256。<br>[SwitchA] ntp <span class="hljs-keyword">trusted</span> authentication-keyid <span class="hljs-number">45</span><br></code></pre></td></tr></table></figure><p>指定侦听接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ntp server source-<span class="hljs-keyword">interface</span> <span class="hljs-symbol">vlanif</span> <span class="hljs-symbol">ID</span><br></code></pre></td></tr></table></figure><h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><p>设置同步地址</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">undo<span class="hljs-built_in"> ntp server </span><span class="hljs-built_in">disable</span> <br></code></pre></td></tr></table></figure><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">ntp</span>-service unicast-server <span class="hljs-built_in">IP</span><br></code></pre></td></tr></table></figure><p>开启认证情况</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">[SwitchB] ntp authentication <span class="hljs-keyword">enable</span><br>[SwitchB] ntp authentication-keyid <span class="hljs-number">45</span> authentication-mode hmac-sha256 hello123456    <br>//认证算法有MD5和HMAC-SHA256两种，HMAC-SHA256安全性高，MD5运行速度块。本举例使用HMAC-SHA256。<br>[SwitchB] ntp <span class="hljs-keyword">trusted</span> authentication-keyid <span class="hljs-number">45</span><br>[SwitchB] ntp unicast-<span class="hljs-keyword">server</span> <span class="hljs-number">10.10</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span> authentication-keyid <span class="hljs-number">45</span>            <br>//配置时间同步的方式为单播客户端/服务器模式。<br></code></pre></td></tr></table></figure><h1 id="DNS设置"><a href="#DNS设置" class="headerlink" title="DNS设置"></a>DNS设置</h1><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">dns</span> resolve <br>dns server <span class="hljs-number">223.5.5.5</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
@@ -21,6 +21,8 @@
     
     
     <tags>
+      
+      <tag>DNS</tag>
       
       <tag>交换路由</tag>
       
@@ -112,33 +114,6 @@
   
   
   <entry>
-    <title>炉石传说卡组</title>
-    <link href="/article/34153f4e.html"/>
-    <url>/article/34153f4e.html</url>
-    
-    <content type="html"><![CDATA[<h3 id="炉石传说卡组"><a href="#炉石传说卡组" class="headerlink" title="炉石传说卡组"></a>炉石传说卡组</h3><h4 id="宇宙快乐术"><a href="#宇宙快乐术" class="headerlink" title="宇宙快乐术"></a>宇宙快乐术</h4><p><img src="/img/doc/Game/%E8%90%9D%E8%8E%89%E6%9C%AF.png" alt="宇宙快乐术"></p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment">### 萝莉术</span><br><span class="hljs-comment"># Class: Warlock</span><br><span class="hljs-comment"># Format: Wild</span><br><span class="hljs-comment"># Year of the Wolf</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># 1x (1) Mistress of Mixtures</span><br><span class="hljs-comment"># 1x (1) Sir Finley Mrrgglton</span><br><span class="hljs-comment"># 1x (2) Corrupting Mist</span><br><span class="hljs-comment"># 1x (2) Defile</span><br><span class="hljs-comment"># 1x (2) Dirty Rat</span><br><span class="hljs-comment"># 1x (2) Doomsayer</span><br><span class="hljs-comment"># 1x (2) Grizzled Wizard</span><br><span class="hljs-comment"># 1x (2) Plot Twist</span><br><span class="hljs-comment"># 1x (2) Youthful Brewmaster</span><br><span class="hljs-comment"># 1x (2) Zephrys the Great</span><br><span class="hljs-comment"># 1x (3) Brann Bronzebeard</span><br><span class="hljs-comment"># 1x (3) Dark Skies</span><br><span class="hljs-comment"># 1x (3) Gluttonous Ooze</span><br><span class="hljs-comment"># 1x (3) Ironbeak Owl</span><br><span class="hljs-comment"># 1x (3) Prince Renathal</span><br><span class="hljs-comment"># 1x (3) Stonehill Defender</span><br><span class="hljs-comment"># 1x (3) Zola the Gorgon</span><br><span class="hljs-comment"># 1x (4) E.T.C., Band Manager</span><br><span class="hljs-comment">#   1x (2) Gnomeferatu</span><br><span class="hljs-comment">#   1x (4) Eater of Secrets</span><br><span class="hljs-comment">#   1x (5) Platebreaker</span><br><span class="hljs-comment"># 1x (4) Immolate</span><br><span class="hljs-comment"># 1x (4) Shadowflame</span><br><span class="hljs-comment"># 1x (4) Siphon Soul</span><br><span class="hljs-comment"># 1x (5) Antique Healbot</span><br><span class="hljs-comment"># 1x (5) Despicable Dreadlord</span><br><span class="hljs-comment"># 1x (5) Emperor Thaurissan</span><br><span class="hljs-comment"># 1x (5) Loatheb</span><br><span class="hljs-comment"># 1x (5) Platebreaker</span><br><span class="hljs-comment"># 1x (5) Rotten Applebaum</span><br><span class="hljs-comment"># 1x (5) Steamcleaner</span><br><span class="hljs-comment"># 1x (5) Zilliax</span><br><span class="hljs-comment"># 1x (6) Reno Jackson</span><br><span class="hljs-comment"># 1x (6) Skulking Geist</span><br><span class="hljs-comment"># 1x (6) Sylvanas Windrunner</span><br><span class="hljs-comment"># 1x (6) Tickatus</span><br><span class="hljs-comment"># 1x (7) Lord Godfrey</span><br><span class="hljs-comment"># 1x (8) Enhanced Dreadlord</span><br><span class="hljs-comment"># 1x (8) Twisting Nether</span><br><span class="hljs-comment"># 1x (9) Mal&#x27;Ganis</span><br><span class="hljs-comment"># 1x (9) Voidlord</span><br><span class="hljs-comment"># 1x (10) Bloodreaver Gul&#x27;dan</span><br><span class="hljs-comment"># 1x (10) N&#x27;Zoth, the Corruptor</span><br><span class="hljs-comment">#</span><br>AAEBAf0GKJMBogLbBswIuQ36DsIP9Q<span class="hljs-regexp">/WEcMWhBeFF+CsApvCAt7EAt/</span>EAtPFAo<span class="hljs-regexp">/HAufLAvfNAqDOApfTAujnApz4AtqbA/y</span>jA+usA<span class="hljs-regexp">/uwA6e1A87hA5ygBPXOBJbUBJ3UBP/</span>hBJfvBP3EBdj2BcL4BdWeBgAAAQOuzQL9xAX7sAP9xAXSngb9xAUAAA==<br><span class="hljs-comment">#</span><br><span class="hljs-comment"># To use this deck, copy it to your clipboard and create a new deck in Hearthstone</span><br><span class="hljs-comment"># Generated by HDT - https://hsreplay.net</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>影音娱乐</category>
-      
-      <category>游戏</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>游戏</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>华为路由器防火墙拨号配置</title>
     <link href="/article/aa14d5e3.html"/>
     <url>/article/aa14d5e3.html</url>
@@ -158,6 +133,64 @@
     <tags>
       
       <tag>交换路由</tag>
+      
+      <tag>PPPOE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Docker安装WireGuard</title>
+    <link href="/article/10030833.html"/>
+    <url>/article/10030833.html</url>
+    
+    <content type="html"><![CDATA[<h4 id="Docker安装WireGuard"><a href="#Docker安装WireGuard" class="headerlink" title="Docker安装WireGuard"></a>Docker安装WireGuard</h4><figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">---</span><br><span class="hljs-attribute">version</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2.1&quot;</span><br><span class="hljs-attribute">services</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">wireguard</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">linuxserver/wireguard:latest</span><br>    <span class="hljs-attribute">container_name</span><span class="hljs-punctuation">:</span> <span class="hljs-string">wireguard</span><br>    <span class="hljs-attribute">cap_add</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">NET_ADMIN</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SYS_MODULE</span><br>    <span class="hljs-attribute">environment</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PUID=1000</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PGID=1000</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">TZ=Asia/Shanghai</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SERVERURL=domian.com</span><br>      <span class="hljs-comment">#域名</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SERVERPORT=51820</span><br>      <span class="hljs-comment">#端口</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PEERS=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PEERDNS=223.5.5.5</span><br>      <span class="hljs-comment">#dns地址</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">INTERNAL_SUBNET=172.16.21.0</span><br>      <span class="hljs-comment">#内部地址段</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ALLOWEDIPS=0.0.0.0/0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PERSISTENTKEEPALIVE_PEERS=all</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">LOG_CONFS=true</span><br>    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./config:/config</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/lib/modules:/lib/modules</span><br>    <span class="hljs-attribute">ports</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">51820:51820/udp</span><br>    <span class="hljs-attribute">sysctls</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">net.ipv4.conf.all.src_valid_mark=1</span><br>    <span class="hljs-attribute">restart</span><span class="hljs-punctuation">:</span> <span class="hljs-string">unless-stopped</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>应用</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>WireGuard</tag>
+      
+      <tag>VPN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>炉石传说卡组</title>
+    <link href="/article/34153f4e.html"/>
+    <url>/article/34153f4e.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="炉石传说卡组"><a href="#炉石传说卡组" class="headerlink" title="炉石传说卡组"></a>炉石传说卡组</h3><h4 id="宇宙快乐术"><a href="#宇宙快乐术" class="headerlink" title="宇宙快乐术"></a>宇宙快乐术</h4><p><img src="/img/doc/Game/%E8%90%9D%E8%8E%89%E6%9C%AF.png" alt="宇宙快乐术"></p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment">### 萝莉术</span><br><span class="hljs-comment"># Class: Warlock</span><br><span class="hljs-comment"># Format: Wild</span><br><span class="hljs-comment"># Year of the Wolf</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># 1x (1) Mistress of Mixtures</span><br><span class="hljs-comment"># 1x (1) Sir Finley Mrrgglton</span><br><span class="hljs-comment"># 1x (2) Corrupting Mist</span><br><span class="hljs-comment"># 1x (2) Defile</span><br><span class="hljs-comment"># 1x (2) Dirty Rat</span><br><span class="hljs-comment"># 1x (2) Doomsayer</span><br><span class="hljs-comment"># 1x (2) Grizzled Wizard</span><br><span class="hljs-comment"># 1x (2) Plot Twist</span><br><span class="hljs-comment"># 1x (2) Youthful Brewmaster</span><br><span class="hljs-comment"># 1x (2) Zephrys the Great</span><br><span class="hljs-comment"># 1x (3) Brann Bronzebeard</span><br><span class="hljs-comment"># 1x (3) Dark Skies</span><br><span class="hljs-comment"># 1x (3) Gluttonous Ooze</span><br><span class="hljs-comment"># 1x (3) Ironbeak Owl</span><br><span class="hljs-comment"># 1x (3) Prince Renathal</span><br><span class="hljs-comment"># 1x (3) Stonehill Defender</span><br><span class="hljs-comment"># 1x (3) Zola the Gorgon</span><br><span class="hljs-comment"># 1x (4) E.T.C., Band Manager</span><br><span class="hljs-comment">#   1x (2) Gnomeferatu</span><br><span class="hljs-comment">#   1x (4) Eater of Secrets</span><br><span class="hljs-comment">#   1x (5) Platebreaker</span><br><span class="hljs-comment"># 1x (4) Immolate</span><br><span class="hljs-comment"># 1x (4) Shadowflame</span><br><span class="hljs-comment"># 1x (4) Siphon Soul</span><br><span class="hljs-comment"># 1x (5) Antique Healbot</span><br><span class="hljs-comment"># 1x (5) Despicable Dreadlord</span><br><span class="hljs-comment"># 1x (5) Emperor Thaurissan</span><br><span class="hljs-comment"># 1x (5) Loatheb</span><br><span class="hljs-comment"># 1x (5) Platebreaker</span><br><span class="hljs-comment"># 1x (5) Rotten Applebaum</span><br><span class="hljs-comment"># 1x (5) Steamcleaner</span><br><span class="hljs-comment"># 1x (5) Zilliax</span><br><span class="hljs-comment"># 1x (6) Reno Jackson</span><br><span class="hljs-comment"># 1x (6) Skulking Geist</span><br><span class="hljs-comment"># 1x (6) Sylvanas Windrunner</span><br><span class="hljs-comment"># 1x (6) Tickatus</span><br><span class="hljs-comment"># 1x (7) Lord Godfrey</span><br><span class="hljs-comment"># 1x (8) Enhanced Dreadlord</span><br><span class="hljs-comment"># 1x (8) Twisting Nether</span><br><span class="hljs-comment"># 1x (9) Mal&#x27;Ganis</span><br><span class="hljs-comment"># 1x (9) Voidlord</span><br><span class="hljs-comment"># 1x (10) Bloodreaver Gul&#x27;dan</span><br><span class="hljs-comment"># 1x (10) N&#x27;Zoth, the Corruptor</span><br><span class="hljs-comment">#</span><br>AAEBAf0GKJMBogLbBswIuQ36DsIP9Q<span class="hljs-regexp">/WEcMWhBeFF+CsApvCAt7EAt/</span>EAtPFAo<span class="hljs-regexp">/HAufLAvfNAqDOApfTAujnApz4AtqbA/y</span>jA+usA<span class="hljs-regexp">/uwA6e1A87hA5ygBPXOBJbUBJ3UBP/</span>hBJfvBP3EBdj2BcL4BdWeBgAAAQOuzQL9xAX7sAP9xAXSngb9xAUAAA==<br><span class="hljs-comment">#</span><br><span class="hljs-comment"># To use this deck, copy it to your clipboard and create a new deck in Hearthstone</span><br><span class="hljs-comment"># Generated by HDT - https://hsreplay.net</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>影音娱乐</category>
+      
+      <category>游戏</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>游戏</tag>
       
     </tags>
     
@@ -247,33 +280,6 @@
   
   
   <entry>
-    <title>Docker安装WireGuard</title>
-    <link href="/article/10030833.html"/>
-    <url>/article/10030833.html</url>
-    
-    <content type="html"><![CDATA[<h4 id="Docker安装WireGuard"><a href="#Docker安装WireGuard" class="headerlink" title="Docker安装WireGuard"></a>Docker安装WireGuard</h4><figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">---</span><br><span class="hljs-attribute">version</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2.1&quot;</span><br><span class="hljs-attribute">services</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">wireguard</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">linuxserver/wireguard:latest</span><br>    <span class="hljs-attribute">container_name</span><span class="hljs-punctuation">:</span> <span class="hljs-string">wireguard</span><br>    <span class="hljs-attribute">cap_add</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">NET_ADMIN</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SYS_MODULE</span><br>    <span class="hljs-attribute">environment</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PUID=1000</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PGID=1000</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">TZ=Asia/Shanghai</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SERVERURL=domian.com</span><br>      <span class="hljs-comment">#域名</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SERVERPORT=51820</span><br>      <span class="hljs-comment">#端口</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PEERS=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PEERDNS=223.5.5.5</span><br>      <span class="hljs-comment">#dns地址</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">INTERNAL_SUBNET=172.16.21.0</span><br>      <span class="hljs-comment">#内部地址段</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ALLOWEDIPS=0.0.0.0/0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PERSISTENTKEEPALIVE_PEERS=all</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">LOG_CONFS=true</span><br>    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./config:/config</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/lib/modules:/lib/modules</span><br>    <span class="hljs-attribute">ports</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">51820:51820/udp</span><br>    <span class="hljs-attribute">sysctls</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">net.ipv4.conf.all.src_valid_mark=1</span><br>    <span class="hljs-attribute">restart</span><span class="hljs-punctuation">:</span> <span class="hljs-string">unless-stopped</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-      <category>应用</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>WireGuard</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>WinPcap安装失败解</title>
     <link href="/article/36d831fb.html"/>
     <url>/article/36d831fb.html</url>
@@ -286,8 +292,6 @@
       <category>学习笔记</category>
       
       <category>Windows</category>
-      
-      <category>网络</category>
       
     </categories>
     
@@ -347,6 +351,141 @@
     <tags>
       
       <tag>IP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统不能新建文件夹</title>
+    <link href="/article/c90b14c7.html"/>
+    <url>/article/c90b14c7.html</url>
+    
+    <content type="html"><![CDATA[<p>在运行框中输入<code>regedit</code>，这个时候就会弹出一个“注册表编辑器”的窗口。</p><p>按照以下顺序打开，没有<code>New</code>就新建一个<code>项</code>。</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">KEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New<br></code></pre></td></tr></table></figure><p>新建一个字符串值，在数值数据中输入{D969A300-E7FF-11d0-A93B-00A0C90F2719}这个数值，点击确定即可新建文件夹了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>优化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>删除此电脑中的软件图标</title>
+    <link href="/article/387f6f72.html"/>
+    <url>/article/387f6f72.html</url>
+    
+    <content type="html"><![CDATA[<p>删除<code>此电脑</code>中的软件图标</p><p>1.按下<code>win+r</code>打开运行，输入<code>regedit</code>,依次打开如下路径。</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop<br></code></pre></td></tr></table></figure><p>2.找到文件夹<code>Desktop</code>点击下拉再点击<code>NameSpace</code>右击下面软件对应文件夹，右键点击“删除”。</p><p>3.继续找到<code>MyComputer</code>点击下拉再点击<code>NameSpace</code>右击下面软件对应文件夹，右键点击“删除”。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>优化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NextCloud反向代理</title>
+    <link href="/article/aae55609.html"/>
+    <url>/article/aae55609.html</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs zephir">&lt;?php<br>$CONFIG = <span class="hljs-keyword">array</span> (<br>  <span class="hljs-string">&#x27;memcache.local&#x27;</span> =&gt; <span class="hljs-string">&#x27;\\OC\\Memcache\\APCu&#x27;</span>,<br>  <span class="hljs-string">&#x27;memcache.locking&#x27;</span> =&gt; <span class="hljs-string">&#x27;\\OC\\Memcache\\Redis&#x27;</span>,<br>  <span class="hljs-string">&#x27;redis&#x27;</span> =&gt;<br>  <span class="hljs-keyword">array</span> (<br>    <span class="hljs-string">&#x27;host&#x27;</span> =&gt; <span class="hljs-string">&#x27;Redis地址&#x27;</span>,<br>    <span class="hljs-string">&#x27;port&#x27;</span> =&gt; Redis端口,<br>  ),<br>  <span class="hljs-string">&#x27;datadirectory&#x27;</span> =&gt; <span class="hljs-string">&#x27;/data&#x27;</span>,<br>  <span class="hljs-string">&#x27;instanceid&#x27;</span> =&gt; <span class="hljs-string">&#x27;c1r4ss&#x27;</span>,<br>  <span class="hljs-string">&#x27;passwordsalt&#x27;</span> =&gt; <span class="hljs-string">&#x27;Y465JyqS3RiDl&#x27;</span>,<br>  <span class="hljs-string">&#x27;secret&#x27;</span> =&gt; <span class="hljs-string">&#x27;6AaD8x0dyNTwX03RsGpVZMjkEau&#x27;</span>,<br>  <span class="hljs-string">&#x27;trusted_domains&#x27;</span> =&gt;<br>  <span class="hljs-keyword">array</span> (<br>    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">&#x27;本机IP&#x27;</span>,<br>        <span class="hljs-number">1</span> =&gt; <span class="hljs-string">&#x27;信任域名1&#x27;</span>,<br>        <span class="hljs-number">2</span> =&gt; <span class="hljs-string">&#x27;信任域名2&#x27;</span>,<br>  ),<br>  <span class="hljs-string">&#x27;dbtype&#x27;</span> =&gt; <span class="hljs-string">&#x27;mysql&#x27;</span>,<br>  <span class="hljs-string">&#x27;version&#x27;</span> =&gt; <span class="hljs-string">&#x27;22.2.3.0&#x27;</span>,<br>  <span class="hljs-string">&#x27;overwrite.cli.url&#x27;</span> =&gt; <span class="hljs-string">&#x27;https://域名&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbname&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库名&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbhost&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库地址:3306&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbport&#x27;</span> =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbtableprefix&#x27;</span> =&gt; <span class="hljs-string">&#x27;oc_&#x27;</span>,<br>  <span class="hljs-string">&#x27;mysql.utf8mb4&#x27;</span> =&gt; <span class="hljs-keyword">true</span>,<br>  <span class="hljs-string">&#x27;dbuser&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库用户&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbpassword&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库密码&#x27;</span>,<br>  <span class="hljs-string">&#x27;installed&#x27;</span> =&gt; <span class="hljs-keyword">true</span>,<br>#  <span class="hljs-string">&#x27;auth.bruteforce.protection.enabled&#x27;</span> =&gt; <span class="hljs-keyword">false</span>,<br>  <span class="hljs-string">&#x27;overwritehost&#x27;</span> =&gt; <span class="hljs-string">&#x27;代理域名或域名加端口&#x27;</span>,<br>  <span class="hljs-string">&#x27;overwriteprotocol&#x27;</span> =&gt; <span class="hljs-string">&#x27;https&#x27;</span>,<br>  <span class="hljs-string">&#x27;app_install_overwrite&#x27;</span> =&gt;<br>  <span class="hljs-keyword">array</span> (<br>    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">&#x27;hancomoffice&#x27;</span>,<br>  ),<br>);<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>应用</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>反向代理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ip addr命令解析</title>
+    <link href="/article/a1d7de99.html"/>
+    <url>/article/a1d7de99.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="一、配置静态IP地址"><a href="#一、配置静态IP地址" class="headerlink" title="一、配置静态IP地址"></a>一、配置静态IP地址</h3><h4 id="1-查看名称，停止接口"><a href="#1-查看名称，停止接口" class="headerlink" title="1.查看名称，停止接口"></a>1.查看名称，停止接口</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">ip addr<span class="hljs-built_in"></span><br><span class="hljs-built_in">ip </span>link <span class="hljs-built_in">set</span> eth0 down<br></code></pre></td></tr></table></figure><h4 id="2-配置地址"><a href="#2-配置地址" class="headerlink" title="2.配置地址"></a>2.配置地址</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ip</span> addr add <span class="hljs-number">192.168.10.110</span>/<span class="hljs-number">24</span> dev eth0<br></code></pre></td></tr></table></figure><h4 id="3-激活网络接口"><a href="#3-激活网络接口" class="headerlink" title="3.激活网络接口"></a>3.激活网络接口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> eth0 up<br></code></pre></td></tr></table></figure><h4 id="4-查看信息"><a href="#4-查看信息" class="headerlink" title="4.查看信息"></a>4.查看信息</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">ip addr</span><br></code></pre></td></tr></table></figure><h3 id="二、配置网关和DNS"><a href="#二、配置网关和DNS" class="headerlink" title="二、配置网关和DNS"></a>二、配置网关和DNS</h3><h4 id="1-配置网关"><a href="#1-配置网关" class="headerlink" title="1.配置网关"></a>1.配置网关</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">ip<span class="hljs-built_in"> route </span><span class="hljs-built_in">add</span><span class="hljs-built_in"> default </span>via 192.168.10.1<br></code></pre></td></tr></table></figure><h4 id="2-配置dns信息"><a href="#2-配置dns信息" class="headerlink" title="2.配置dns信息"></a>2.配置dns信息</h4><p>如果&#x2F;etc目录下不存在&#x2F;etc&#x2F;resolvconf文件，则手动创建一个，其内容如下所示:</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># Generated by NetworkManager</span><br><span class="hljs-attribute">nameserver</span> <span class="hljs-number">119.29.29.29</span><br>nameserver <span class="hljs-number">192.168.10.1</span><br></code></pre></td></tr></table></figure><h4 id="3-验证连通性"><a href="#3-验证连通性" class="headerlink" title="3.验证连通性"></a>3.验证连通性</h4><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">ping</span> <span class="hljs-number">192.168</span><span class="hljs-number">.10</span><span class="hljs-number">.1</span> <br><br><span class="hljs-built_in">ping</span> baidu.com<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Debian 更改系统语言</title>
+    <link href="/article/7cc63a46.html"/>
+    <url>/article/7cc63a46.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="Debian-更改系统语言"><a href="#Debian-更改系统语言" class="headerlink" title="Debian 更改系统语言"></a>Debian 更改系统语言</h1><p>要支持区域设置，首先要安装locales软件包：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">apt-<span class="hljs-built_in">get</span> install locales<br></code></pre></td></tr></table></figure><p>首先查看当前语言环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">env</span> | grep LANG<br></code></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> LANG=en_US.UTF-8<br><span class="hljs-comment">#export LANG=zh_cn.UTF-8</span><br><span class="hljs-comment">#注意  en表示语言，US表示国家，UTF-8表示编码</span><br></code></pre></td></tr></table></figure><p>重新配置 locales，然后重启</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">dpkg-reconfigure locales<br>reboot<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语言</tag>
       
     </tags>
     
@@ -544,33 +683,6 @@
   
   
   <entry>
-    <title>ip addr命令解析</title>
-    <link href="/article/a1d7de99.html"/>
-    <url>/article/a1d7de99.html</url>
-    
-    <content type="html"><![CDATA[<h3 id="一、配置静态IP地址"><a href="#一、配置静态IP地址" class="headerlink" title="一、配置静态IP地址"></a>一、配置静态IP地址</h3><h4 id="1-查看名称，停止接口"><a href="#1-查看名称，停止接口" class="headerlink" title="1.查看名称，停止接口"></a>1.查看名称，停止接口</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">ip addr<span class="hljs-built_in"></span><br><span class="hljs-built_in">ip </span>link <span class="hljs-built_in">set</span> eth0 down<br></code></pre></td></tr></table></figure><h4 id="2-配置地址"><a href="#2-配置地址" class="headerlink" title="2.配置地址"></a>2.配置地址</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ip</span> addr add <span class="hljs-number">192.168.10.110</span>/<span class="hljs-number">24</span> dev eth0<br></code></pre></td></tr></table></figure><h4 id="3-激活网络接口"><a href="#3-激活网络接口" class="headerlink" title="3.激活网络接口"></a>3.激活网络接口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> eth0 up<br></code></pre></td></tr></table></figure><h4 id="4-查看信息"><a href="#4-查看信息" class="headerlink" title="4.查看信息"></a>4.查看信息</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">ip addr</span><br></code></pre></td></tr></table></figure><h3 id="二、配置网关和DNS"><a href="#二、配置网关和DNS" class="headerlink" title="二、配置网关和DNS"></a>二、配置网关和DNS</h3><h4 id="1-配置网关"><a href="#1-配置网关" class="headerlink" title="1.配置网关"></a>1.配置网关</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">ip<span class="hljs-built_in"> route </span><span class="hljs-built_in">add</span><span class="hljs-built_in"> default </span>via 192.168.10.1<br></code></pre></td></tr></table></figure><h4 id="2-配置dns信息"><a href="#2-配置dns信息" class="headerlink" title="2.配置dns信息"></a>2.配置dns信息</h4><p>如果&#x2F;etc目录下不存在&#x2F;etc&#x2F;resolvconf文件，则手动创建一个，其内容如下所示:</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># Generated by NetworkManager</span><br><span class="hljs-attribute">nameserver</span> <span class="hljs-number">119.29.29.29</span><br>nameserver <span class="hljs-number">192.168.10.1</span><br></code></pre></td></tr></table></figure><h4 id="3-验证连通性"><a href="#3-验证连通性" class="headerlink" title="3.验证连通性"></a>3.验证连通性</h4><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">ping</span> <span class="hljs-number">192.168</span><span class="hljs-number">.10</span><span class="hljs-number">.1</span> <br><br><span class="hljs-built_in">ping</span> baidu.com<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-      <category>Linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>UOS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Linux查看硬件信息</title>
     <link href="/article/8fb1a3ba.html"/>
     <url>/article/8fb1a3ba.html</url>
@@ -654,33 +766,6 @@
   
   
   <entry>
-    <title>Debian 更改系统语言</title>
-    <link href="/article/7cc63a46.html"/>
-    <url>/article/7cc63a46.html</url>
-    
-    <content type="html"><![CDATA[<h1 id="Debian-更改系统语言"><a href="#Debian-更改系统语言" class="headerlink" title="Debian 更改系统语言"></a>Debian 更改系统语言</h1><p>要支持区域设置，首先要安装locales软件包：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">apt-<span class="hljs-built_in">get</span> install locales<br></code></pre></td></tr></table></figure><p>首先查看当前语言环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">env</span> | grep LANG<br></code></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> LANG=en_US.UTF-8<br><span class="hljs-comment">#export LANG=zh_cn.UTF-8</span><br><span class="hljs-comment">#注意  en表示语言，US表示国家，UTF-8表示编码</span><br></code></pre></td></tr></table></figure><p>重新配置 locales，然后重启</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">dpkg-reconfigure locales<br>reboot<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-      <category>Linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Linux</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>基于azerothcore-wotlk编译魔兽335服务端</title>
     <link href="/article/d4751c53.html"/>
     <url>/article/d4751c53.html</url>
@@ -702,33 +787,6 @@
       <tag>游戏</tag>
       
       <tag>魔兽世界</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>系统不能新建文件夹</title>
-    <link href="/article/c90b14c7.html"/>
-    <url>/article/c90b14c7.html</url>
-    
-    <content type="html"><![CDATA[<p>在运行框中输入<code>regedit</code>，这个时候就会弹出一个“注册表编辑器”的窗口。</p><p>按照以下顺序打开，没有<code>New</code>就新建一个<code>项</code>。</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">KEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New<br></code></pre></td></tr></table></figure><p>新建一个字符串值，在数值数据中输入{D969A300-E7FF-11d0-A93B-00A0C90F2719}这个数值，点击确定即可新建文件夹了。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-      <category>Linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>优化</tag>
       
     </tags>
     
@@ -1134,62 +1192,6 @@
     <tags>
       
       <tag>IP</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>NextCloud反向代理</title>
-    <link href="/article/aae55609.html"/>
-    <url>/article/aae55609.html</url>
-    
-    <content type="html"><![CDATA[<figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs zephir">&lt;?php<br>$CONFIG = <span class="hljs-keyword">array</span> (<br>  <span class="hljs-string">&#x27;memcache.local&#x27;</span> =&gt; <span class="hljs-string">&#x27;\\OC\\Memcache\\APCu&#x27;</span>,<br>  <span class="hljs-string">&#x27;memcache.locking&#x27;</span> =&gt; <span class="hljs-string">&#x27;\\OC\\Memcache\\Redis&#x27;</span>,<br>  <span class="hljs-string">&#x27;redis&#x27;</span> =&gt;<br>  <span class="hljs-keyword">array</span> (<br>    <span class="hljs-string">&#x27;host&#x27;</span> =&gt; <span class="hljs-string">&#x27;Redis地址&#x27;</span>,<br>    <span class="hljs-string">&#x27;port&#x27;</span> =&gt; Redis端口,<br>  ),<br>  <span class="hljs-string">&#x27;datadirectory&#x27;</span> =&gt; <span class="hljs-string">&#x27;/data&#x27;</span>,<br>  <span class="hljs-string">&#x27;instanceid&#x27;</span> =&gt; <span class="hljs-string">&#x27;c1r4ss&#x27;</span>,<br>  <span class="hljs-string">&#x27;passwordsalt&#x27;</span> =&gt; <span class="hljs-string">&#x27;Y465JyqS3RiDl&#x27;</span>,<br>  <span class="hljs-string">&#x27;secret&#x27;</span> =&gt; <span class="hljs-string">&#x27;6AaD8x0dyNTwX03RsGpVZMjkEau&#x27;</span>,<br>  <span class="hljs-string">&#x27;trusted_domains&#x27;</span> =&gt;<br>  <span class="hljs-keyword">array</span> (<br>    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">&#x27;本机IP&#x27;</span>,<br>        <span class="hljs-number">1</span> =&gt; <span class="hljs-string">&#x27;信任域名1&#x27;</span>,<br>        <span class="hljs-number">2</span> =&gt; <span class="hljs-string">&#x27;信任域名2&#x27;</span>,<br>  ),<br>  <span class="hljs-string">&#x27;dbtype&#x27;</span> =&gt; <span class="hljs-string">&#x27;mysql&#x27;</span>,<br>  <span class="hljs-string">&#x27;version&#x27;</span> =&gt; <span class="hljs-string">&#x27;22.2.3.0&#x27;</span>,<br>  <span class="hljs-string">&#x27;overwrite.cli.url&#x27;</span> =&gt; <span class="hljs-string">&#x27;https://域名&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbname&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库名&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbhost&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库地址:3306&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbport&#x27;</span> =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbtableprefix&#x27;</span> =&gt; <span class="hljs-string">&#x27;oc_&#x27;</span>,<br>  <span class="hljs-string">&#x27;mysql.utf8mb4&#x27;</span> =&gt; <span class="hljs-keyword">true</span>,<br>  <span class="hljs-string">&#x27;dbuser&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库用户&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbpassword&#x27;</span> =&gt; <span class="hljs-string">&#x27;数据库密码&#x27;</span>,<br>  <span class="hljs-string">&#x27;installed&#x27;</span> =&gt; <span class="hljs-keyword">true</span>,<br>#  <span class="hljs-string">&#x27;auth.bruteforce.protection.enabled&#x27;</span> =&gt; <span class="hljs-keyword">false</span>,<br>  <span class="hljs-string">&#x27;overwritehost&#x27;</span> =&gt; <span class="hljs-string">&#x27;代理域名或域名加端口&#x27;</span>,<br>  <span class="hljs-string">&#x27;overwriteprotocol&#x27;</span> =&gt; <span class="hljs-string">&#x27;https&#x27;</span>,<br>  <span class="hljs-string">&#x27;app_install_overwrite&#x27;</span> =&gt;<br>  <span class="hljs-keyword">array</span> (<br>    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">&#x27;hancomoffice&#x27;</span>,<br>  ),<br>);<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-      <category>应用</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>NextCloud</tag>
-      
-      <tag>反向代理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>删除此电脑中的软件图标</title>
-    <link href="/article/387f6f72.html"/>
-    <url>/article/387f6f72.html</url>
-    
-    <content type="html"><![CDATA[<p>删除<code>此电脑</code>中的软件图标</p><p>1.按下<code>win+r</code>打开运行，输入<code>regedit</code>,依次打开如下路径。</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop<br></code></pre></td></tr></table></figure><p>2.找到文件夹<code>Desktop</code>点击下拉再点击<code>NameSpace</code>右击下面软件对应文件夹，右键点击“删除”。</p><p>3.继续找到<code>MyComputer</code>点击下拉再点击<code>NameSpace</code>右击下面软件对应文件夹，右键点击“删除”。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-      <category>Linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>优化</tag>
       
     </tags>
     
